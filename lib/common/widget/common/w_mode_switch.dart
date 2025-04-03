@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../common/common.dart';
+import '../../common/common.dart';
 
 class ModeSwitch extends StatefulWidget {
   final bool value;
@@ -36,12 +36,7 @@ class _ModeSwitchState extends State<ModeSwitch> {
       onTap: () => widget.onChanged(!widget.value),
       child: Row(
         children: [
-          'Light'
-              .text
-              .size(14)
-              .color(widget.value ? context.appColors.inActivate : context.appColors.activate)
-              .bold
-              .makeWithDefaultFont(),
+          'Light'.text.size(14).color(widget.value ? context.appColors.inActivate : context.appColors.activate).bold.makeWithDefaultFont(),
           const Width(5),
           SizedBox(
             height: widget.height,
@@ -50,9 +45,7 @@ class _ModeSwitchState extends State<ModeSwitch> {
               children: [
                 AnimatedContainer(
                   decoration: BoxDecoration(
-                      color: widget.value
-                          ? const Color.fromARGB(255, 0, 9, 27)
-                          : const Color.fromARGB(255, 106, 158, 255),
+                      color: widget.value ? const Color.fromARGB(255, 0, 9, 27) : const Color.fromARGB(255, 106, 158, 255),
                       borderRadius: BorderRadius.circular(widget.height / 2)),
                   duration: duration,
                 ),
@@ -85,12 +78,7 @@ class _ModeSwitchState extends State<ModeSwitch> {
             ),
           ),
           const Width(5),
-          'Dark'
-              .text
-              .size(14)
-              .color(widget.value ? context.appColors.activate : context.appColors.inActivate)
-              .bold
-              .makeWithDefaultFont(),
+          'Dark'.text.size(14).color(widget.value ? context.appColors.activate : context.appColors.inActivate).bold.makeWithDefaultFont(),
         ],
       ),
     );

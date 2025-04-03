@@ -7,11 +7,11 @@
 
 import 'dart:io';
 
-import 'package:fast_app_base/app.dart';
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/data/preference/app_preferences.dart';
+import 'package:fast_app_base/basic/app.dart';
+import 'package:fast_app_base/common/common/common.dart';
+import 'package:fast_app_base/common/data/preference/app/app_preferences.dart';
 import 'package:fast_app_base/common/language/language.dart';
-import 'package:fast_app_base/common/theme/custom_theme.dart';
+import 'package:fast_app_base/common/theme/etc/custom_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:isar/isar.dart';
@@ -43,14 +43,8 @@ void main() {
 }
 
 Future<void> pumpApp(WidgetTester tester) async {
-  await tester.pumpWidget(EasyLocalization(
-      supportedLocales: const [
-        Locale('ko'),
-        Locale('en'),
-      ],
-      startLocale: const Locale('ko'),
-      fallbackLocale: const Locale('ko'),
-      path: 'assets/translations',
-      useOnlyLangCode: true,
-      child: const App()));
+  await tester.pumpWidget(EasyLocalization(supportedLocales: const [
+    Locale('ko'),
+    Locale('en'),
+  ], startLocale: const Locale('ko'), fallbackLocale: const Locale('ko'), path: 'assets/translations', useOnlyLangCode: true, child: const App()));
 }

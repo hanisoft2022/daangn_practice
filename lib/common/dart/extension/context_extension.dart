@@ -1,8 +1,8 @@
-import 'package:fast_app_base/common/theme/custom_theme.dart';
-import 'package:fast_app_base/common/theme/custom_theme_holder.dart';
+import 'package:fast_app_base/common/theme/etc/custom_theme.dart';
+import 'package:fast_app_base/common/theme/etc/custom_theme_holder.dart';
 import 'package:flutter/material.dart';
 
-import '../../common.dart';
+import '../../common/common.dart';
 
 extension ContextExtension on BuildContext {
   double width(double widthSize) {

@@ -1,8 +1,8 @@
-import 'package:fast_app_base/common/theme/custom_theme.dart';
+import 'package:fast_app_base/common/theme/etc/custom_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'item/preference_item.dart';
+import '../item/preference_item.dart';
 
 export 'package:get/get_rx/get_rx.dart';
 export 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';

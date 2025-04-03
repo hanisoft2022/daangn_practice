@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../common.dart';
+import '../../common/common.dart';
 
 extension SnackbarContextExtension on BuildContext {
   ///Scaffold안에 Snackbar를 보여줍니다.
@@ -35,8 +35,7 @@ void _showSnackBarWithContext(BuildContext context, SnackBar snackbar) {
 }
 
 class _SnackbarFactory {
-  static SnackBar createSnackBar(BuildContext context, String message,
-      {Color? bgColor, Widget? extraButton}) {
+  static SnackBar createSnackBar(BuildContext context, String message, {Color? bgColor, Widget? extraButton}) {
     Color snackbarBgColor = bgColor ?? context.appColors.snackbarBgColor;
     return SnackBar(
         elevation: 0,
@@ -73,8 +72,7 @@ class _SnackbarFactory {
         ));
   }
 
-  static SnackBar createErrorSnackBar(BuildContext context, String? message,
-      {Color bgColor = AppColors.salmon, double bottomMargin = 0}) {
+  static SnackBar createErrorSnackBar(BuildContext context, String? message, {Color bgColor = AppColors.salmon, double bottomMargin = 0}) {
     return SnackBar(
         elevation: 0,
         behavior: SnackBarBehavior.fixed,

@@ -1,10 +1,9 @@
-import 'package:fast_app_base/common/common.dart';
+import 'package:fast_app_base/common/common/common.dart';
 import 'package:flutter/material.dart';
 
 enum RoundButtonTheme {
   blue(AppColors.blue, Colors.white, AppColors.blue, backgroundColorProvider: blueColorProvider),
-  whiteWithBlueBorder(Colors.white, AppColors.darkBlue, AppColors.blue,
-      backgroundColorProvider: blueColorProvider),
+  whiteWithBlueBorder(Colors.white, AppColors.darkBlue, AppColors.blue, backgroundColorProvider: blueColorProvider),
   blink(AppColors.blue, Colors.white, Colors.black, backgroundColorProvider: blueColorProvider);
 
   const RoundButtonTheme(

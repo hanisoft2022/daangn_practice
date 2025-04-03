@@ -1,4 +1,4 @@
-import 'package:fast_app_base/common/common.dart';
+import 'package:fast_app_base/common/common/common.dart';
 import 'package:fast_app_base/common/theme/color/dark_app_colors.dart';
 import 'package:fast_app_base/common/theme/color/light_app_colors.dart';
 import 'package:fast_app_base/common/theme/shadows/dart_app_shadows.dart';
@@ -48,5 +48,4 @@ ThemeData darkTheme = ThemeData(
     // textTheme: GoogleFonts.nanumMyeongjoTextTheme(
     //   ThemeData(brightness: Brightness.dark).textTheme,
     // ),
-    colorScheme: ColorScheme.fromSeed(
-        seedColor: CustomTheme.dark.appColors.seedColor, brightness: Brightness.dark));
+    colorScheme: ColorScheme.fromSeed(seedColor: CustomTheme.dark.appColors.seedColor, brightness: Brightness.dark));

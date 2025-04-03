@@ -1,5 +1,5 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/util/local_json.dart';
+import 'package:fast_app_base/common/common/common.dart';
+import 'package:fast_app_base/common/util/etc/local_json.dart';
 import 'package:fast_app_base/screen/opensource/vo_package.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +40,7 @@ class _OpensourceScreenState extends State<OpensourceScreen> {
         itemBuilder: (context, index) => OpensourceItem(packageList[index]),
         itemCount: packageList.length,
         separatorBuilder: (BuildContext context, int index) {
-          return const Line().pSymmetric(h:20);
+          return const Line().pSymmetric(h: 20);
         },
       ),
     );

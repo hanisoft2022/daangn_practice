@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../app.dart';
-import '../data/preference/prefs.dart';
+import '../../../basic/app.dart';
+import '../../data/preference/app/prefs.dart';
 import 'custom_theme.dart';
 import 'custom_theme_holder.dart';
 import 'theme_util.dart';

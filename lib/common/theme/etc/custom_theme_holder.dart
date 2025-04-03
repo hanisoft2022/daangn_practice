@@ -1,7 +1,7 @@
-import 'package:fast_app_base/common/theme/custom_theme.dart';
+import 'package:fast_app_base/common/theme/etc/custom_theme.dart';
 import 'package:flutter/material.dart';
 
-import '../common.dart';
+import '../../common/common.dart';
 
 class CustomThemeHolder extends InheritedWidget {
   final AbstractThemeColors appColors;
@@ -27,8 +27,7 @@ class CustomThemeHolder extends InheritedWidget {
   }
 
   static CustomThemeHolder of(BuildContext context) {
-    CustomThemeHolder inherited =
-        (context.dependOnInheritedWidgetOfExactType<CustomThemeHolder>())!;
+    CustomThemeHolder inherited = (context.dependOnInheritedWidgetOfExactType<CustomThemeHolder>())!;
     return inherited;
   }
 }

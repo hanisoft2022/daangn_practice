@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../app.dart';
-import '../common.dart';
+import '../../basic/app.dart';
+import '../common/common.dart';
 
 enum Language {
   korean(Locale('ko'), '$basePath/flag/flag_kr.png'),
@@ -17,6 +17,4 @@ enum Language {
   }
 }
 
-Language get currentLanguage => App.navigatorKey.currentContext!.locale.languageCode == 'ko'
-    ? Language.korean
-    : Language.english;
+Language get currentLanguage => App.navigatorKey.currentContext!.locale.languageCode == 'ko' ? Language.korean : Language.english;

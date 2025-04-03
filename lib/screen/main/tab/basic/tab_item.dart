@@ -1,4 +1,4 @@
-import 'package:fast_app_base/common/common.dart';
+import 'package:fast_app_base/common/common/common.dart';
 import 'package:fast_app_base/screen/main/tab/chat/f_chat.dart';
 import 'package:fast_app_base/screen/main/tab/home/f_home.dart';
 import 'package:fast_app_base/screen/main/tab/local_life/f_local_life.dart';

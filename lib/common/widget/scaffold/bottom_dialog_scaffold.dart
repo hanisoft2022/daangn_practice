@@ -1,4 +1,4 @@
-import 'package:fast_app_base/common/common.dart';
+import 'package:fast_app_base/common/common/common.dart';
 import 'package:flutter/material.dart';
 import 'transparent_scaffold.dart';
 
@@ -15,9 +15,7 @@ class BottomDialogScaffold extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.only(top: 20, bottom: 20, right: 15, left: 15),
           decoration: BoxDecoration(
-              color: context.backgroundColor,
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(15), topRight: Radius.circular(15))),
+              color: context.backgroundColor, borderRadius: const BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15))),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.end,

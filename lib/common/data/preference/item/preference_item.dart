@@ -1,4 +1,4 @@
-import '../app_preferences.dart';
+import '../app/app_preferences.dart';
 
 class PreferenceItem<T> {
   final T defaultValue;

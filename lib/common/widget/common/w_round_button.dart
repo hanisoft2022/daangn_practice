@@ -1,8 +1,8 @@
-import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/common/widget/round_button_theme.dart';
+import 'package:fast_app_base/common/common/common.dart';
+import 'package:fast_app_base/common/widget/common/round_button_theme.dart';
 import 'package:flutter/material.dart';
 
-import 'mixin/wm_refresh_every_second.dart';
+import '../mixin/wm_refresh_every_second.dart';
 
 class RoundButton extends StatefulWidget {
   final String text;
@@ -134,9 +134,7 @@ class RoundButtonState extends State<RoundButton> with RefreshEverySecond {
         children: [
           AnimatedContainer(
             margin: EdgeInsets.symmetric(horizontal: widget.sideMargin),
-            padding: EdgeInsets.only(
-                left: widget.sidePadding + widget.leftPadding,
-                right: widget.sidePadding + widget.rightPadding),
+            padding: EdgeInsets.only(left: widget.sidePadding + widget.leftPadding, right: widget.sidePadding + widget.rightPadding),
             duration: const Duration(milliseconds: 300),
             width: finalWidth,
             height: widget.height,
@@ -145,10 +143,7 @@ class RoundButtonState extends State<RoundButton> with RefreshEverySecond {
               borderRadius: BorderRadius.circular(widget.borderRadius ?? widget.height / 2),
               border: Border.all(width: 1, color: borderColor),
               shape: BoxShape.rectangle,
-              boxShadow: [
-                BoxShadow(
-                    color: shadowColor, offset: const Offset(0, 3), blurRadius: 6, spreadRadius: 0)
-              ],
+              boxShadow: [BoxShadow(color: shadowColor, offset: const Offset(0, 3), blurRadius: 6, spreadRadius: 0)],
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
