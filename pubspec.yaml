@@ -69,10 +69,13 @@ dependencies:
 
   #network
   dio: ^5.0.0
-  retrofit: ^4.0.1
+  retrofit: ^4.4.2
   freezed: ^2.3.4
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -84,12 +87,15 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  retrofit_generator: '5.0.0'
-  build_runner: '2.3.3'
+  retrofit_generator: 9.1.9
+  build_runner: ^2.4.15
   json_serializable: ^6.6.1
 
   mock_web_server: ^5.0.0-nullsafety.1
   flutter_oss_licenses: ^2.0.1
+  riverpod_generator: ^2.6.1
+  custom_lint: ^0.7.3
+  riverpod_lint: ^2.6.4
 
 
 
