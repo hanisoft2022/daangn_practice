@@ -12,6 +12,9 @@ _$ProductPostImpl _$$ProductPostImplFromJson(Map<String, dynamic> json) =>
       product: Product.fromJson(json['product'] as Map<String, dynamic>),
       content: json['content'] as String,
       address: json['address'] as String,
+      chatCount: (json['chatCount'] as num).toInt(),
+      likeCount: (json['likeCount'] as num).toInt(),
+      createdAt: DateTime.parse(json['createdAt'] as String),
     );
 
 Map<String, dynamic> _$$ProductPostImplToJson(_$ProductPostImpl instance) =>
@@ -20,4 +23,7 @@ Map<String, dynamic> _$$ProductPostImplToJson(_$ProductPostImpl instance) =>
       'product': instance.product,
       'content': instance.content,
       'address': instance.address,
+      'chatCount': instance.chatCount,
+      'likeCount': instance.likeCount,
+      'createdAt': instance.createdAt.toIso8601String(),
     };

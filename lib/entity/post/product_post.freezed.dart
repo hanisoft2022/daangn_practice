@@ -24,6 +24,9 @@ mixin _$ProductPost {
   Product get product => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
+  int get chatCount => throw _privateConstructorUsedError;
+  int get likeCount => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   /// Serializes this ProductPost to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +44,14 @@ abstract class $ProductPostCopyWith<$Res> {
           ProductPost value, $Res Function(ProductPost) then) =
       _$ProductPostCopyWithImpl<$Res, ProductPost>;
   @useResult
-  $Res call({User user, Product product, String content, String address});
+  $Res call(
+      {User user,
+      Product product,
+      String content,
+      String address,
+      int chatCount,
+      int likeCount,
+      DateTime createdAt});
 
   $UserCopyWith<$Res> get user;
   $ProductCopyWith<$Res> get product;
@@ -66,6 +76,9 @@ class _$ProductPostCopyWithImpl<$Res, $Val extends ProductPost>
     Object? product = null,
     Object? content = null,
     Object? address = null,
+    Object? chatCount = null,
+    Object? likeCount = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       user: null == user
@@ -84,6 +97,18 @@ class _$ProductPostCopyWithImpl<$Res, $Val extends ProductPost>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      chatCount: null == chatCount
+          ? _value.chatCount
+          : chatCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      likeCount: null == likeCount
+          ? _value.likeCount
+          : likeCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 
@@ -116,7 +141,14 @@ abstract class _$$ProductPostImplCopyWith<$Res>
       __$$ProductPostImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User user, Product product, String content, String address});
+  $Res call(
+      {User user,
+      Product product,
+      String content,
+      String address,
+      int chatCount,
+      int likeCount,
+      DateTime createdAt});
 
   @override
   $UserCopyWith<$Res> get user;
@@ -141,6 +173,9 @@ class __$$ProductPostImplCopyWithImpl<$Res>
     Object? product = null,
     Object? content = null,
     Object? address = null,
+    Object? chatCount = null,
+    Object? likeCount = null,
+    Object? createdAt = null,
   }) {
     return _then(_$ProductPostImpl(
       user: null == user
@@ -159,6 +194,18 @@ class __$$ProductPostImplCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      chatCount: null == chatCount
+          ? _value.chatCount
+          : chatCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      likeCount: null == likeCount
+          ? _value.likeCount
+          : likeCount // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -170,7 +217,10 @@ class _$ProductPostImpl implements _ProductPost {
       {required this.user,
       required this.product,
       required this.content,
-      required this.address});
+      required this.address,
+      required this.chatCount,
+      required this.likeCount,
+      required this.createdAt});
 
   factory _$ProductPostImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductPostImplFromJson(json);
@@ -183,10 +233,16 @@ class _$ProductPostImpl implements _ProductPost {
   final String content;
   @override
   final String address;
+  @override
+  final int chatCount;
+  @override
+  final int likeCount;
+  @override
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'ProductPost(user: $user, product: $product, content: $content, address: $address)';
+    return 'ProductPost(user: $user, product: $product, content: $content, address: $address, chatCount: $chatCount, likeCount: $likeCount, createdAt: $createdAt)';
   }
 
   @override
@@ -197,12 +253,19 @@ class _$ProductPostImpl implements _ProductPost {
             (identical(other.user, user) || other.user == user) &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.address, address) || other.address == address));
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.chatCount, chatCount) ||
+                other.chatCount == chatCount) &&
+            (identical(other.likeCount, likeCount) ||
+                other.likeCount == likeCount) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, user, product, content, address);
+  int get hashCode => Object.hash(runtimeType, user, product, content, address,
+      chatCount, likeCount, createdAt);
 
   /// Create a copy of ProductPost
   /// with the given fields replaced by the non-null parameter values.
@@ -225,7 +288,10 @@ abstract class _ProductPost implements ProductPost {
       {required final User user,
       required final Product product,
       required final String content,
-      required final String address}) = _$ProductPostImpl;
+      required final String address,
+      required final int chatCount,
+      required final int likeCount,
+      required final DateTime createdAt}) = _$ProductPostImpl;
 
   factory _ProductPost.fromJson(Map<String, dynamic> json) =
       _$ProductPostImpl.fromJson;
@@ -238,6 +304,12 @@ abstract class _ProductPost implements ProductPost {
   String get content;
   @override
   String get address;
+  @override
+  int get chatCount;
+  @override
+  int get likeCount;
+  @override
+  DateTime get createdAt;
 
   /// Create a copy of ProductPost
   /// with the given fields replaced by the non-null parameter values.

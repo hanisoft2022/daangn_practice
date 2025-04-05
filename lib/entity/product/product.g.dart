@@ -10,9 +10,11 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
     _$ProductImpl(
       user: User.fromJson(json['user'] as Map<String, dynamic>),
       name: json['name'] as String,
-      price: json['price'] as String,
+      price: (json['price'] as num).toInt(),
       description: json['description'] as String,
-      imageUrl: json['imageUrl'] as String,
+      status: $enumDecode(_$ProductStatusEnumMap, json['status']),
+      imageUrls:
+          (json['imageUrls'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
@@ -21,5 +23,12 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
       'name': instance.name,
       'price': instance.price,
       'description': instance.description,
-      'imageUrl': instance.imageUrl,
+      'status': _$ProductStatusEnumMap[instance.status]!,
+      'imageUrls': instance.imageUrls,
     };
+
+const _$ProductStatusEnumMap = {
+  ProductStatus.normal: 'normal',
+  ProductStatus.booked: 'booked',
+  ProductStatus.sold: 'sold',
+};

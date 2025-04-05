@@ -12,6 +12,9 @@ class ProductPost with _$ProductPost {
     required final Product product,
     required final String content,
     required final String address,
+    required final int chatCount,
+    required final int likeCount,
+    required final DateTime createdAt,
   }) = _ProductPost;
 
   factory ProductPost.fromJson(Map<String, dynamic> json) => _$ProductPostFromJson(json);

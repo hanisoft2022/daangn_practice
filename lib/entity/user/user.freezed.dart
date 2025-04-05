@@ -23,6 +23,7 @@ mixin _$User {
   int get id => throw _privateConstructorUsedError;
   String get nickname => throw _privateConstructorUsedError;
   double get temperature => throw _privateConstructorUsedError;
+  String get profileUrl => throw _privateConstructorUsedError;
 
   /// Serializes this User to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +39,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({int id, String nickname, double temperature});
+  $Res call({int id, String nickname, double temperature, String profileUrl});
 }
 
 /// @nodoc
@@ -59,6 +60,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? id = null,
     Object? nickname = null,
     Object? temperature = null,
+    Object? profileUrl = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -73,6 +75,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
               as double,
+      profileUrl: null == profileUrl
+          ? _value.profileUrl
+          : profileUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -84,7 +90,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$UserImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String nickname, double temperature});
+  $Res call({int id, String nickname, double temperature, String profileUrl});
 }
 
 /// @nodoc
@@ -102,6 +108,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? id = null,
     Object? nickname = null,
     Object? temperature = null,
+    Object? profileUrl = null,
   }) {
     return _then(_$UserImpl(
       id: null == id
@@ -116,6 +123,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.temperature
           : temperature // ignore: cast_nullable_to_non_nullable
               as double,
+      profileUrl: null == profileUrl
+          ? _value.profileUrl
+          : profileUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -124,7 +135,10 @@ class __$$UserImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserImpl implements _User {
   const _$UserImpl(
-      {required this.id, required this.nickname, required this.temperature});
+      {required this.id,
+      required this.nickname,
+      required this.temperature,
+      required this.profileUrl});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
@@ -135,10 +149,12 @@ class _$UserImpl implements _User {
   final String nickname;
   @override
   final double temperature;
+  @override
+  final String profileUrl;
 
   @override
   String toString() {
-    return 'User(id: $id, nickname: $nickname, temperature: $temperature)';
+    return 'User(id: $id, nickname: $nickname, temperature: $temperature, profileUrl: $profileUrl)';
   }
 
   @override
@@ -150,12 +166,15 @@ class _$UserImpl implements _User {
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
             (identical(other.temperature, temperature) ||
-                other.temperature == temperature));
+                other.temperature == temperature) &&
+            (identical(other.profileUrl, profileUrl) ||
+                other.profileUrl == profileUrl));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, nickname, temperature);
+  int get hashCode =>
+      Object.hash(runtimeType, id, nickname, temperature, profileUrl);
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -177,7 +196,8 @@ abstract class _User implements User {
   const factory _User(
       {required final int id,
       required final String nickname,
-      required final double temperature}) = _$UserImpl;
+      required final double temperature,
+      required final String profileUrl}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -187,6 +207,8 @@ abstract class _User implements User {
   String get nickname;
   @override
   double get temperature;
+  @override
+  String get profileUrl;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
