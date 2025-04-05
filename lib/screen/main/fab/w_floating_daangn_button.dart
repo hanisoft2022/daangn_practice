@@ -11,14 +11,21 @@ class FloatingDaangnButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isExpanded = ref.watch(floatingDaangnButtonisExpandedProvider);
-    final isSmall = ref.watch(floatingDaangnButtonisSmallProvider);
+    final floatingDaangnButtonState = ref.watch(floatingDaangnButtonStateProvider);
+    final isExpanded = floatingDaangnButtonState.isExpanded;
+    final isSmall = floatingDaangnButtonState.isSmall;
 
     return Stack(
       children: [
-        AnimatedContainer(
-          duration: duration,
-          color: isExpanded ? Colors.black.withAlpha(100) : Colors.transparent,
+        GestureDetector(
+          onTap: () => ref.read(floatingDaangnButtonStateProvider.notifier).onBackgroundTap(),
+          child: IgnorePointer(
+            ignoring: !isExpanded,
+            child: AnimatedContainer(
+              duration: duration,
+              color: isExpanded ? Colors.black.withAlpha(100) : Colors.transparent,
+            ),
+          ),
         ),
         Align(
           alignment: Alignment.bottomRight,
@@ -46,9 +53,9 @@ class FloatingDaangnButton extends ConsumerWidget {
                   ),
                 ),
               ),
-              InkWell(
+              GestureDetector(
                 onTap: () {
-                  ref.read(floatingDaangnButtonisExpandedProvider.notifier).state = !isExpanded;
+                  ref.read(floatingDaangnButtonStateProvider.notifier).toggleMenu();
                 },
                 child: AnimatedContainer(
                   height: 60,
@@ -70,7 +77,7 @@ class FloatingDaangnButton extends ConsumerWidget {
                         duration: duration,
                         child: SizedBox(
                           width: isSmall ? 0.0 : null,
-                          child: isSmall ? null : '글쓰기'.text.make(),
+                          child: isSmall ? null : '글쓰기'.text.bold.make(),
                         ),
                       ),
                     ],

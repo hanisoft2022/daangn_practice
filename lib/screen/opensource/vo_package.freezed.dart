@@ -12,7 +12,7 @@ part of 'vo_package.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Package _$PackageFromJson(Map<String, dynamic> json) {
   return _Package.fromJson(json);
@@ -31,8 +31,12 @@ mixin _$Package {
   bool get isSdk => throw _privateConstructorUsedError;
   bool get isDirectDependency => throw _privateConstructorUsedError;
 
+  /// Serializes this Package to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Package
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PackageCopyWith<Package> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -64,6 +68,8 @@ class _$PackageCopyWithImpl<$Res, $Val extends Package>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Package
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -124,10 +130,10 @@ class _$PackageCopyWithImpl<$Res, $Val extends Package>
 }
 
 /// @nodoc
-abstract class _$$_PackageCopyWith<$Res> implements $PackageCopyWith<$Res> {
-  factory _$$_PackageCopyWith(
-          _$_Package value, $Res Function(_$_Package) then) =
-      __$$_PackageCopyWithImpl<$Res>;
+abstract class _$$PackageImplCopyWith<$Res> implements $PackageCopyWith<$Res> {
+  factory _$$PackageImplCopyWith(
+          _$PackageImpl value, $Res Function(_$PackageImpl) then) =
+      __$$PackageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -144,12 +150,15 @@ abstract class _$$_PackageCopyWith<$Res> implements $PackageCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PackageCopyWithImpl<$Res>
-    extends _$PackageCopyWithImpl<$Res, _$_Package>
-    implements _$$_PackageCopyWith<$Res> {
-  __$$_PackageCopyWithImpl(_$_Package _value, $Res Function(_$_Package) _then)
+class __$$PackageImplCopyWithImpl<$Res>
+    extends _$PackageCopyWithImpl<$Res, _$PackageImpl>
+    implements _$$PackageImplCopyWith<$Res> {
+  __$$PackageImplCopyWithImpl(
+      _$PackageImpl _value, $Res Function(_$PackageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Package
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -164,7 +173,7 @@ class __$$_PackageCopyWithImpl<$Res>
     Object? isSdk = null,
     Object? isDirectDependency = null,
   }) {
-    return _then(_$_Package(
+    return _then(_$PackageImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -211,8 +220,8 @@ class __$$_PackageCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Package implements _Package {
-  _$_Package(
+class _$PackageImpl implements _Package {
+  _$PackageImpl(
       {required this.name,
       required this.description,
       this.homepage,
@@ -225,8 +234,8 @@ class _$_Package implements _Package {
       required this.isDirectDependency})
       : _authors = authors;
 
-  factory _$_Package.fromJson(Map<String, dynamic> json) =>
-      _$$_PackageFromJson(json);
+  factory _$PackageImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PackageImplFromJson(json);
 
   @override
   final String name;
@@ -261,10 +270,10 @@ class _$_Package implements _Package {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Package &&
+            other is _$PackageImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -282,7 +291,7 @@ class _$_Package implements _Package {
                 other.isDirectDependency == isDirectDependency));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -297,15 +306,17 @@ class _$_Package implements _Package {
       isSdk,
       isDirectDependency);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Package
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PackageCopyWith<_$_Package> get copyWith =>
-      __$$_PackageCopyWithImpl<_$_Package>(this, _$identity);
+  _$$PackageImplCopyWith<_$PackageImpl> get copyWith =>
+      __$$PackageImplCopyWithImpl<_$PackageImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PackageToJson(
+    return _$$PackageImplToJson(
       this,
     );
   }
@@ -322,9 +333,9 @@ abstract class _Package implements Package {
       final String? license,
       required final bool isMarkdown,
       required final bool isSdk,
-      required final bool isDirectDependency}) = _$_Package;
+      required final bool isDirectDependency}) = _$PackageImpl;
 
-  factory _Package.fromJson(Map<String, dynamic> json) = _$_Package.fromJson;
+  factory _Package.fromJson(Map<String, dynamic> json) = _$PackageImpl.fromJson;
 
   @override
   String get name;
@@ -346,8 +357,11 @@ abstract class _Package implements Package {
   bool get isSdk;
   @override
   bool get isDirectDependency;
+
+  /// Create a copy of Package
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
-  _$$_PackageCopyWith<_$_Package> get copyWith =>
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PackageImplCopyWith<_$PackageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
