@@ -23,7 +23,7 @@ mixin _$ProductPost {
   User get user => throw _privateConstructorUsedError;
   Product get product => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
+  Address get address => throw _privateConstructorUsedError;
   int get chatCount => throw _privateConstructorUsedError;
   int get likeCount => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -48,13 +48,14 @@ abstract class $ProductPostCopyWith<$Res> {
       {User user,
       Product product,
       String content,
-      String address,
+      Address address,
       int chatCount,
       int likeCount,
       DateTime createdAt});
 
   $UserCopyWith<$Res> get user;
   $ProductCopyWith<$Res> get product;
+  $AddressCopyWith<$Res> get address;
 }
 
 /// @nodoc
@@ -96,7 +97,7 @@ class _$ProductPostCopyWithImpl<$Res, $Val extends ProductPost>
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Address,
       chatCount: null == chatCount
           ? _value.chatCount
           : chatCount // ignore: cast_nullable_to_non_nullable
@@ -131,6 +132,16 @@ class _$ProductPostCopyWithImpl<$Res, $Val extends ProductPost>
       return _then(_value.copyWith(product: value) as $Val);
     });
   }
+
+  /// Create a copy of ProductPost
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AddressCopyWith<$Res> get address {
+    return $AddressCopyWith<$Res>(_value.address, (value) {
+      return _then(_value.copyWith(address: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -145,7 +156,7 @@ abstract class _$$ProductPostImplCopyWith<$Res>
       {User user,
       Product product,
       String content,
-      String address,
+      Address address,
       int chatCount,
       int likeCount,
       DateTime createdAt});
@@ -154,6 +165,8 @@ abstract class _$$ProductPostImplCopyWith<$Res>
   $UserCopyWith<$Res> get user;
   @override
   $ProductCopyWith<$Res> get product;
+  @override
+  $AddressCopyWith<$Res> get address;
 }
 
 /// @nodoc
@@ -193,7 +206,7 @@ class __$$ProductPostImplCopyWithImpl<$Res>
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Address,
       chatCount: null == chatCount
           ? _value.chatCount
           : chatCount // ignore: cast_nullable_to_non_nullable
@@ -232,7 +245,7 @@ class _$ProductPostImpl implements _ProductPost {
   @override
   final String content;
   @override
-  final String address;
+  final Address address;
   @override
   final int chatCount;
   @override
@@ -288,7 +301,7 @@ abstract class _ProductPost implements ProductPost {
       {required final User user,
       required final Product product,
       required final String content,
-      required final String address,
+      required final Address address,
       required final int chatCount,
       required final int likeCount,
       required final DateTime createdAt}) = _$ProductPostImpl;
@@ -303,7 +316,7 @@ abstract class _ProductPost implements ProductPost {
   @override
   String get content;
   @override
-  String get address;
+  Address get address;
   @override
   int get chatCount;
   @override

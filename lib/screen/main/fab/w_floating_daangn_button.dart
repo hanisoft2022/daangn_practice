@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class FloatingDaangnButton extends ConsumerWidget {
+  // ignore: constant_identifier_names
+  static const double FAB_HEIGHT = 60;
+
   const FloatingDaangnButton({super.key});
 
   static const duration = Duration(milliseconds: 300);
@@ -58,7 +61,7 @@ class FloatingDaangnButton extends ConsumerWidget {
                   ref.read(floatingDaangnButtonStateProvider.notifier).toggleMenu();
                 },
                 child: AnimatedContainer(
-                  height: 60,
+                  height: FAB_HEIGHT,
                   duration: duration,
                   padding: const EdgeInsets.symmetric(horizontal: 18),
                   decoration: BoxDecoration(

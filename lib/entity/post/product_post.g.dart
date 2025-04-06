@@ -11,7 +11,7 @@ _$ProductPostImpl _$$ProductPostImplFromJson(Map<String, dynamic> json) =>
       user: User.fromJson(json['user'] as Map<String, dynamic>),
       product: Product.fromJson(json['product'] as Map<String, dynamic>),
       content: json['content'] as String,
-      address: json['address'] as String,
+      address: Address.fromJson(json['address'] as Map<String, dynamic>),
       chatCount: (json['chatCount'] as num).toInt(),
       likeCount: (json['likeCount'] as num).toInt(),
       createdAt: DateTime.parse(json['createdAt'] as String),

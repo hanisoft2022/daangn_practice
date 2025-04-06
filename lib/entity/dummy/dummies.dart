@@ -2,9 +2,10 @@ import 'package:fast_app_base/common/dart/extension/num_duration_extension.dart'
 import 'package:fast_app_base/entity/post/product_post.dart';
 import 'package:fast_app_base/entity/product/product.dart';
 import 'package:fast_app_base/entity/product/product_status.dart';
+import 'package:fast_app_base/entity/user/address.dart';
 import 'package:fast_app_base/entity/user/user.dart';
 
-String getDummyProfileUrl(int id) => 'http://picsum.photos/id/$id/200/300';
+String getDummyProfileUrl(int id) => 'http://picsum.photos/id/$id/200/200';
 
 final user1 = User(
   id: 1,
@@ -47,7 +48,7 @@ final product2 = Product(
   description: '옛날 시계' '정상작동합니다.' '택배비 별도',
   status: ProductStatus.normal,
   imageUrls: [
-    getDummyProfileUrl(1212),
+    getDummyProfileUrl(12),
     getDummyProfileUrl(108),
     getDummyProfileUrl(972),
   ],
@@ -70,7 +71,7 @@ final post1 = ProductPost(
   user: product1.user,
   product: product1,
   content: '글 내용입니다.',
-  address: '서울시 특별한 주소',
+  address: Address('서울시 특별한 주소', '플러터구'),
   chatCount: 3,
   likeCount: 2,
   createdAt: DateTime.now().subtract(30.minutes),
@@ -80,7 +81,7 @@ final post2 = ProductPost(
   user: product2.user,
   product: product2,
   content: '글 내용입니다.',
-  address: '서울시 특별한 주소',
+  address: Address('서울시 특별한 주소', '다트동'),
   chatCount: 30,
   likeCount: 12,
   createdAt: DateTime.now().subtract(5.minutes),
@@ -90,7 +91,7 @@ final post3 = ProductPost(
   user: product3.user,
   product: product3,
   content: '글 내용입니다.',
-  address: '서울시 특별한 주소',
+  address: Address('서울시 특별한 주소', '앱동'),
   chatCount: 3,
   likeCount: 19,
   createdAt: DateTime.now().subtract(2.days),
