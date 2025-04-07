@@ -21,6 +21,7 @@ export '../theme/shadows/abs_theme_shadows.dart';
 export '../util/async/flutter_async.dart';
 export '../widget/common/w_empty_expanded.dart';
 export '../widget/common/w_height_and_width.dart';
+export '../widget/common/w_constant.dart';
 export '../widget/common/w_line.dart';
 export '../widget/common/w_tap.dart';
 

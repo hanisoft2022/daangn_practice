@@ -3,6 +3,7 @@ import 'package:fast_app_base/entity/dummy/dummies.dart';
 import 'package:fast_app_base/screen/main/fab/w_floating_daangn_button.dart';
 import 'package:fast_app_base/screen/main/fab/w_floating_daangn_button.riverpod.dart';
 import 'package:fast_app_base/screen/main/tab/home/widget/w_product_post_item.dart';
+import 'package:fast_app_base/screen/notification/screen/s_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -42,75 +43,90 @@ class _HomeFragmentState extends ConsumerState<HomeFragment> {
   }
 
   @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      AppBar(
-        centerTitle: false,
-        automaticallyImplyLeading: false,
-        title:
-            // ! PopupMenuButton 사용하면 렌더링 이슈로 작동 안 됨.
-            // ! 이유는 모르겠음..
-            // PopupMenuButton<String>(
-            //   initialValue: title,
-            //   onSelected: (value) {
-            //     setState(() => title = value);
-            //   },
-            //   itemBuilder: (context) => ['다트동', '앱동', '쇼핑동']
-            //       .map(
-            //         (e) => PopupMenuItem(
-            //           value: e,
-            //           child: e.text.make(),
-            //         ),
-            //       )
-            //       .toList(),
-            //   child: title.text.make(),
-            // ),
-            MenuAnchor(
-          builder: (BuildContext context, MenuController controller, Widget? child) {
-            return GestureDetector(
-              onTap: () {
-                if (controller.isOpen) {
-                  controller.close();
-                } else {
-                  controller.open();
-                }
-              },
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-                  const Icon(Icons.arrow_drop_down),
-                ],
-              ),
-            );
-          },
-          menuChildren: ['다트동', '앱동', '쇼핑동']
-              .map(
-                (e) => MenuItemButton(
-                  onPressed: () => setState(() => title = e),
-                  child: Text(e),
+    return Column(
+      children: [
+        AppBar(
+          centerTitle: false,
+          automaticallyImplyLeading: false,
+          title:
+              // ! PopupMenuButton 사용하면 렌더링 이슈로 작동 안 됨.
+              // ! 이유는 모르겠음..
+              // PopupMenuButton<String>(
+              //   initialValue: title,
+              //   onSelected: (value) {
+              //     setState(() => title = value);
+              //   },
+              //   itemBuilder: (context) => ['다트동', '앱동', '쇼핑동']
+              //       .map(
+              //         (e) => PopupMenuItem(
+              //           value: e,
+              //           child: e.text.make(),
+              //         ),
+              //       )
+              //       .toList(),
+              //   child: title.text.make(),
+              // ),
+              MenuAnchor(
+            builder: (BuildContext context, MenuController controller, Widget? child) {
+              return GestureDetector(
+                onTap: () {
+                  if (controller.isOpen) {
+                    controller.close();
+                  } else {
+                    controller.open();
+                  }
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+                    const Icon(Icons.arrow_drop_down),
+                  ],
                 ),
-              )
-              .toList(),
-        ),
-        actions: [
-          badges.Badge(
-            onTap: () {},
-            position: badges.BadgePosition.topEnd(top: -3, end: -3),
-            badgeStyle: const badges.BadgeStyle(badgeColor: Colors.red, padding: EdgeInsets.all(3)),
-            child: const Icon(Icons.notifications_none_rounded),
+              );
+            },
+            menuChildren: ['다트동', '앱동', '쇼핑동']
+                .map(
+                  (e) => MenuItemButton(
+                    onPressed: () => setState(() => title = e),
+                    child: Text(e),
+                  ),
+                )
+                .toList(),
           ),
-          width10
-        ],
-      ),
-      Expanded(
-        child: ListView.separated(
-          controller: scrollController,
-          itemBuilder: (context, index) => ProductPostItem(posts[index]),
-          itemCount: posts.length,
-          separatorBuilder: (context, index) => const Divider(endIndent: 10, indent: 10),
-        ).pOnly(bottom: FloatingDaangnButton.FAB_HEIGHT),
-      ),
-    ]);
+          actions: [
+            IconButton(
+              onPressed: () {
+                Nav.push(const NotificationScreen());
+              },
+              icon: badges.Badge(
+                onTap: () {
+                  Nav.push(const NotificationScreen());
+                },
+                position: badges.BadgePosition.topEnd(top: -3, end: -3),
+                badgeStyle: const badges.BadgeStyle(badgeColor: Colors.red, padding: EdgeInsets.all(3)),
+                child: const Icon(Icons.notifications_none_rounded),
+              ),
+            ),
+            width10
+          ],
+        ),
+        Expanded(
+          child: ListView.separated(
+            controller: scrollController,
+            itemBuilder: (context, index) => ProductPostItem(posts[index]),
+            itemCount: posts.length,
+            separatorBuilder: (context, index) => const Divider(endIndent: 10, indent: 10),
+          ).pOnly(bottom: FloatingDaangnButton.FAB_HEIGHT),
+        ),
+      ],
+    );
   }
 }
