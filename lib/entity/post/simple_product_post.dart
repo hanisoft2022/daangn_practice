@@ -7,7 +7,8 @@ part 'simple_product_post.freezed.dart';
 
 @freezed
 class SimpleProductPost with _$SimpleProductPost {
-  const factory SimpleProductPost({
+  const factory SimpleProductPost(
+    int id, {
     required final User user,
     required final Product product,
     required final String content,

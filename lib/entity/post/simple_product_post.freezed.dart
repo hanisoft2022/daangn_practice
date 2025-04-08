@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SimpleProductPost {
+  int get id => throw _privateConstructorUsedError;
   User get user => throw _privateConstructorUsedError;
   Product get product => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
@@ -38,7 +39,8 @@ abstract class $SimpleProductPostCopyWith<$Res> {
       _$SimpleProductPostCopyWithImpl<$Res, SimpleProductPost>;
   @useResult
   $Res call(
-      {User user,
+      {int id,
+      User user,
       Product product,
       String content,
       Address address,
@@ -66,6 +68,7 @@ class _$SimpleProductPostCopyWithImpl<$Res, $Val extends SimpleProductPost>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? user = null,
     Object? product = null,
     Object? content = null,
@@ -75,6 +78,10 @@ class _$SimpleProductPostCopyWithImpl<$Res, $Val extends SimpleProductPost>
     Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -146,7 +153,8 @@ abstract class _$$SimpleProductPostImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {User user,
+      {int id,
+      User user,
       Product product,
       String content,
       Address address,
@@ -175,6 +183,7 @@ class __$$SimpleProductPostImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? user = null,
     Object? product = null,
     Object? content = null,
@@ -184,6 +193,10 @@ class __$$SimpleProductPostImplCopyWithImpl<$Res>
     Object? createdAt = null,
   }) {
     return _then(_$SimpleProductPostImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -219,7 +232,7 @@ class __$$SimpleProductPostImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SimpleProductPostImpl implements _SimpleProductPost {
-  const _$SimpleProductPostImpl(
+  const _$SimpleProductPostImpl(this.id,
       {required this.user,
       required this.product,
       required this.content,
@@ -228,6 +241,8 @@ class _$SimpleProductPostImpl implements _SimpleProductPost {
       required this.likeCount,
       required this.createdAt});
 
+  @override
+  final int id;
   @override
   final User user;
   @override
@@ -245,7 +260,7 @@ class _$SimpleProductPostImpl implements _SimpleProductPost {
 
   @override
   String toString() {
-    return 'SimpleProductPost(user: $user, product: $product, content: $content, address: $address, chatCount: $chatCount, likeCount: $likeCount, createdAt: $createdAt)';
+    return 'SimpleProductPost(id: $id, user: $user, product: $product, content: $content, address: $address, chatCount: $chatCount, likeCount: $likeCount, createdAt: $createdAt)';
   }
 
   @override
@@ -253,6 +268,7 @@ class _$SimpleProductPostImpl implements _SimpleProductPost {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SimpleProductPostImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.content, content) || other.content == content) &&
@@ -266,8 +282,8 @@ class _$SimpleProductPostImpl implements _SimpleProductPost {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, product, content, address,
-      chatCount, likeCount, createdAt);
+  int get hashCode => Object.hash(runtimeType, id, user, product, content,
+      address, chatCount, likeCount, createdAt);
 
   /// Create a copy of SimpleProductPost
   /// with the given fields replaced by the non-null parameter values.
@@ -280,7 +296,7 @@ class _$SimpleProductPostImpl implements _SimpleProductPost {
 }
 
 abstract class _SimpleProductPost implements SimpleProductPost {
-  const factory _SimpleProductPost(
+  const factory _SimpleProductPost(final int id,
       {required final User user,
       required final Product product,
       required final String content,
@@ -289,6 +305,8 @@ abstract class _SimpleProductPost implements SimpleProductPost {
       required final int likeCount,
       required final DateTime createdAt}) = _$SimpleProductPostImpl;
 
+  @override
+  int get id;
   @override
   User get user;
   @override
