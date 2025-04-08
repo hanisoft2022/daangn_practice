@@ -1,5 +1,5 @@
 import 'package:fast_app_base/common/dart/extension/num_duration_extension.dart';
-import 'package:fast_app_base/entity/post/product_post.dart';
+import 'package:fast_app_base/entity/post/simple_product_post.dart';
 import 'package:fast_app_base/entity/product/product.dart';
 import 'package:fast_app_base/entity/product/product_status.dart';
 import 'package:fast_app_base/entity/user/address.dart';
@@ -30,9 +30,8 @@ final user3 = User(
 
 final product1 = Product(
   user: user1,
-  name: '아이폰15프로',
+  title: '아이폰15프로',
   price: 700000,
-  description: '아이폰15프로' '깨끗하게 잘 쓰던 물건이에요' '찔러보기 하지 마세요',
   status: ProductStatus.normal,
   imageUrls: [
     getDummyProfileUrl(123),
@@ -43,9 +42,8 @@ final product1 = Product(
 
 final product2 = Product(
   user: user2,
-  name: '시계',
+  title: '시계',
   price: 5000,
-  description: '옛날 시계' '정상작동합니다.' '택배비 별도',
   status: ProductStatus.normal,
   imageUrls: [
     getDummyProfileUrl(12),
@@ -56,9 +54,8 @@ final product2 = Product(
 
 final product3 = Product(
   user: user3,
-  name: '인테리어 소품',
+  title: '인테리어 소품',
   price: 240000,
-  description: '인테리어 소품용으로 좋아요' '프랑스에서 샀어요' '많은 관심 부탁드려요 :) ',
   status: ProductStatus.normal,
   imageUrls: [
     getDummyProfileUrl(455),
@@ -67,7 +64,7 @@ final product3 = Product(
   ],
 );
 
-final post1 = ProductPost(
+final post1 = SimpleProductPost(
   user: product1.user,
   product: product1,
   content: '글 내용입니다.',
@@ -77,7 +74,7 @@ final post1 = ProductPost(
   createdAt: DateTime.now().subtract(30.minutes),
 );
 
-final post2 = ProductPost(
+final post2 = SimpleProductPost(
   user: product2.user,
   product: product2,
   content: '글 내용입니다.',
@@ -87,7 +84,7 @@ final post2 = ProductPost(
   createdAt: DateTime.now().subtract(5.minutes),
 );
 
-final post3 = ProductPost(
+final post3 = SimpleProductPost(
   user: product3.user,
   product: product3,
   content: '글 내용입니다.',
@@ -97,4 +94,4 @@ final post3 = ProductPost(
   createdAt: DateTime.now().subtract(2.days),
 );
 
-final List<ProductPost> posts = [post1, post2, post3, post1, post2, post3, post1, post2, post3];
+final List<SimpleProductPost> posts = [post1, post2, post3, post1, post2, post3, post1, post2, post3];

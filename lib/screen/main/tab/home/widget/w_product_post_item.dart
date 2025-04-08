@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fast_app_base/common/common/common.dart';
-import 'package:fast_app_base/entity/post/product_post.dart';
+import 'package:fast_app_base/entity/post/simple_product_post.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class ProductPostItem extends StatelessWidget {
-  final ProductPost productPost;
+  final SimpleProductPost productPost;
 
   const ProductPostItem(this.productPost, {super.key});
 
@@ -28,7 +28,7 @@ class ProductPostItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                productPost.product.name.text.size(16).bold.make(),
+                productPost.product.title.text.size(16).bold.make(),
                 Row(
                   children: [
                     productPost.address.simpleAddress.text.size(14).color(context.appColors.lessImportant).make(),

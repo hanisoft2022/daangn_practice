@@ -44,14 +44,15 @@ class _NotificationItemWidgetState extends ConsumerState<NotificationItemWidget>
                   width: iconWidth,
                 ),
                 Expanded(child: widget.notification.title.text.bold.make()),
-                // if (isEditMode)
-                //   IconButton(
-                //       onPressed: () {
-                //         final list = ref.read(notificationProvider)!;
-                //         list.remove(widget.notification);
-                //         ref.read(notificationProvider.notifier).state = List.of(list);
-                //       },
-                //       icon: const Icon(Icons.delete))
+                if (isEditMode)
+                  IconButton(
+                    onPressed: () {
+                      final list = ref.read(notificationProvider)!;
+                      list.remove(widget.notification);
+                      ref.read(notificationProvider.notifier).state = List.of(list);
+                    },
+                    icon: const Icon(Icons.delete),
+                  )
               ],
             ),
             height10,

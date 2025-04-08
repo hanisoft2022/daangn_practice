@@ -14,21 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Product _$ProductFromJson(Map<String, dynamic> json) {
-  return _Product.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Product {
   User get user => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   int get price => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
   ProductStatus get status => throw _privateConstructorUsedError;
   List<String> get imageUrls => throw _privateConstructorUsedError;
-
-  /// Serializes this Product to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -43,9 +35,8 @@ abstract class $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {User user,
-      String name,
+      String title,
       int price,
-      String description,
       ProductStatus status,
       List<String> imageUrls});
 
@@ -68,9 +59,8 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @override
   $Res call({
     Object? user = null,
-    Object? name = null,
+    Object? title = null,
     Object? price = null,
-    Object? description = null,
     Object? status = null,
     Object? imageUrls = null,
   }) {
@@ -79,18 +69,14 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -122,9 +108,8 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @useResult
   $Res call(
       {User user,
-      String name,
+      String title,
       int price,
-      String description,
       ProductStatus status,
       List<String> imageUrls});
 
@@ -146,9 +131,8 @@ class __$$ProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = null,
-    Object? name = null,
+    Object? title = null,
     Object? price = null,
-    Object? description = null,
     Object? status = null,
     Object? imageUrls = null,
   }) {
@@ -157,18 +141,14 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as User,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       price: null == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as int,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -182,28 +162,22 @@ class __$$ProductImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$ProductImpl implements _Product {
   const _$ProductImpl(
       {required this.user,
-      required this.name,
+      required this.title,
       required this.price,
-      required this.description,
       required this.status,
       required final List<String> imageUrls})
       : _imageUrls = imageUrls;
 
-  factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductImplFromJson(json);
-
   @override
   final User user;
   @override
-  final String name;
+  final String title;
   @override
   final int price;
-  @override
-  final String description;
   @override
   final ProductStatus status;
   final List<String> _imageUrls;
@@ -216,7 +190,7 @@ class _$ProductImpl implements _Product {
 
   @override
   String toString() {
-    return 'Product(user: $user, name: $name, price: $price, description: $description, status: $status, imageUrls: $imageUrls)';
+    return 'Product(user: $user, title: $title, price: $price, status: $status, imageUrls: $imageUrls)';
   }
 
   @override
@@ -225,19 +199,16 @@ class _$ProductImpl implements _Product {
         (other.runtimeType == runtimeType &&
             other is _$ProductImpl &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.price, price) || other.price == price) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality()
                 .equals(other._imageUrls, _imageUrls));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, user, name, price, description,
-      status, const DeepCollectionEquality().hash(_imageUrls));
+  int get hashCode => Object.hash(runtimeType, user, title, price, status,
+      const DeepCollectionEquality().hash(_imageUrls));
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -246,34 +217,22 @@ class _$ProductImpl implements _Product {
   @pragma('vm:prefer-inline')
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
       __$$ProductImplCopyWithImpl<_$ProductImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ProductImplToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Product implements Product {
   const factory _Product(
       {required final User user,
-      required final String name,
+      required final String title,
       required final int price,
-      required final String description,
       required final ProductStatus status,
       required final List<String> imageUrls}) = _$ProductImpl;
-
-  factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
   @override
   User get user;
   @override
-  String get name;
+  String get title;
   @override
   int get price;
-  @override
-  String get description;
   @override
   ProductStatus get status;
   @override
