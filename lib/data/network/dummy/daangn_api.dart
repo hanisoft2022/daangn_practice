@@ -7,7 +7,7 @@ import 'package:fast_app_base/screen/notification/entity/daangn_notification.dar
 
 class DaangnApi {
   // 싱글톤 인스턴스를 저장할 정적 변수
-  static final DaangnApi _instance = DaangnApi._internal();
+  static final DaangnApi _instance = DaangnApi._();
 
   // 팩토리 생성자: 항상 같은 인스턴스를 반환
   factory DaangnApi() {
@@ -15,7 +15,7 @@ class DaangnApi {
   }
 
   // 내부 생성자: 실제 초기화 작업 수행
-  DaangnApi._internal();
+  DaangnApi._();
 
   Future<SimpleResult<List<DaangnNotification>, ApiError>> getNotifications() async {
     await sleepAsync(3000.ms);
