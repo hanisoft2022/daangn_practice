@@ -13,11 +13,16 @@ class ProductPostItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Nav.push(PostDetailScreen(id: simpleProductPost.id)),
+      onTap: () => Nav.push(
+        PostDetailScreen(
+          id: simpleProductPost.id,
+          simpleProductPost: simpleProductPost,
+        ),
+      ),
       child: SizedBox(
         height: 180,
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start, 
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10),

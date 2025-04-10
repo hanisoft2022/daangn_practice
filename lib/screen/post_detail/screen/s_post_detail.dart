@@ -5,7 +5,9 @@ import 'package:fast_app_base/entity/post/product_post.dart';
 import 'package:fast_app_base/entity/post/simple_product_post.dart';
 import 'package:fast_app_base/screen/post_detail/state_manager/product_post_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class PostDetailScreen extends ConsumerWidget {
   final SimpleProductPost? simpleProductPost;
@@ -22,19 +24,110 @@ class PostDetailScreen extends ConsumerWidget {
     final AsyncValue<ProductPost> productPost = ref.watch(productPostProvider(id));
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
-        title: 'post_detail'.text.make(),
-      ),
       body: productPost.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        data: (data) => Center(
-          child: CachedNetworkImage(
-            imageUrl: data.simpleProductPost.product.imageUrls[0],
+        loading: () => simpleProductPost == null ? const Center(child: CircularProgressIndicator()) : _PostDetail(simpleProductPost!),
+        error: (error, stackTrace) => Text(error.toString()),
+        data: (productPost) => _PostDetail(productPost.simpleProductPost),
+      ),
+    );
+  }
+}
+
+class _PostDetail extends HookWidget {
+  final SimpleProductPost simpleProductPost;
+
+  const _PostDetail(this.simpleProductPost);
+
+  @override
+  Widget build(BuildContext context) {
+    final pageController = usePageController(initialPage: 0);
+
+    return Column(
+      children: [
+        Expanded(
+          child: Stack(
+            children: [
+              _ImagePager(pageController: pageController, simpleProductPost: simpleProductPost),
+              const _AppBar(),
+            ],
           ),
         ),
-        error: (error, stackTrace) => Text(error.toString()),
+        Container(
+          height: context.viewPaddingBottom + context.deviceHeight * 0.075,
+          color: Colors.red,
+        )
+      ],
+    );
+  }
+}
+
+class _ImagePager extends StatelessWidget {
+  const _ImagePager({
+    required this.pageController,
+    required this.simpleProductPost,
+  });
+
+  final PageController pageController;
+  final SimpleProductPost simpleProductPost;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: context.deviceWidth,
+      child: Stack(
+        children: [
+          PageView(
+            controller: pageController,
+            children: simpleProductPost.product.imageUrls
+                .map(
+                  (imageUrl) => CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    fit: BoxFit.cover,
+                  ),
+                )
+                .toList(),
+          ),
+          Align(
+            alignment: const Alignment(0, 0.9),
+            child: SmoothPageIndicator(
+              controller: pageController,
+              count: simpleProductPost.product.imageUrls.length,
+              effect: const ExpandingDotsEffect(
+                dotWidth: 10,
+                dotHeight: 10,
+                dotColor: Colors.grey,
+                activeDotColor: Colors.white,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _AppBar extends StatelessWidget {
+  const _AppBar();
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 0,
+      left: 0,
+      right: 0,
+      child: AppBar(
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.share_outlined),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert),
+          )
+        ],
       ),
     );
   }
