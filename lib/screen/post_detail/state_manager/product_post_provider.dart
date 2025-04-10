@@ -1,10 +1,7 @@
 import 'package:fast_app_base/data/network/dummy/daangn_api.dart';
-import 'package:fast_app_base/screen/notification/entity/daangn_notification.dart';
+import 'package:fast_app_base/entity/post/product_post.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final productPostProvider = FutureProvider.family<List<DaangnNotification>, int>(
-  (ref, id) async {
-    final result = await DaangnApi().getNotifications();
-    return result.successData;
-  },
+final productPostProvider = FutureProvider.family.autoDispose<ProductPost, int>(
+  (ref, id) async => await DaangnApi().getPost(id),
 );

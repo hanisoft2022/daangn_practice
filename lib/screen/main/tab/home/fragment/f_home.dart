@@ -53,6 +53,8 @@ class _HomeFragmentState extends ConsumerState<HomeFragment> {
     return Column(
       children: [
         AppBar(
+          backgroundColor: Colors.transparent,
+          surfaceTintColor: Colors.transparent,
           centerTitle: false,
           automaticallyImplyLeading: false,
           title:

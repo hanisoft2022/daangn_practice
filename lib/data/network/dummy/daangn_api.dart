@@ -2,6 +2,8 @@ import 'package:fast_app_base/common/common/cli_common.dart';
 import 'package:fast_app_base/common/common/common.dart';
 import 'package:fast_app_base/data/etc/simple_result.dart';
 import 'package:fast_app_base/data/network/result/api_error.dart';
+import 'package:fast_app_base/entity/dummy/dummies.dart';
+import 'package:fast_app_base/entity/post/product_post.dart';
 import 'package:fast_app_base/screen/notification/dummy/notification_dummies.dart';
 import 'package:fast_app_base/screen/notification/entity/daangn_notification.dart';
 
@@ -18,7 +20,15 @@ class DaangnApi {
   DaangnApi._();
 
   Future<SimpleResult<List<DaangnNotification>, ApiError>> getNotifications() async {
-    await sleepAsync(3000.ms);
+    await sleepAsync(500.ms);
     return SimpleResult.success(notificationList);
+  }
+
+  Future<ProductPost> getPost(int id) async {
+    await sleepAsync(500.ms);
+    return ProductPost(
+      simpleProductPost: simpleProductPost1,
+      content: '후에에에엥',
+    );
   }
 }

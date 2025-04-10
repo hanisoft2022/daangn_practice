@@ -64,7 +64,7 @@ final product3 = Product(
   ],
 );
 
-final post1 = SimpleProductPost(
+final simpleProductPost1 = SimpleProductPost(
   1,
   user: product1.user,
   product: product1,
@@ -75,7 +75,7 @@ final post1 = SimpleProductPost(
   createdAt: DateTime.now().subtract(30.minutes),
 );
 
-final post2 = SimpleProductPost(
+final simpleProductPost2 = SimpleProductPost(
   2,
   user: product2.user,
   product: product2,
@@ -86,7 +86,7 @@ final post2 = SimpleProductPost(
   createdAt: DateTime.now().subtract(5.minutes),
 );
 
-final post3 = SimpleProductPost(
+final simpleProductPost3 = SimpleProductPost(
   3,
   user: product3.user,
   product: product3,
@@ -97,4 +97,14 @@ final post3 = SimpleProductPost(
   createdAt: DateTime.now().subtract(2.days),
 );
 
-final List<SimpleProductPost> posts = [post1, post2, post3, post1, post2, post3, post1, post2, post3];
+final List<SimpleProductPost> posts = [
+  simpleProductPost1,
+  simpleProductPost2,
+  simpleProductPost3,
+  simpleProductPost1,
+  simpleProductPost2,
+  simpleProductPost3,
+  simpleProductPost1,
+  simpleProductPost2,
+  simpleProductPost3
+];
