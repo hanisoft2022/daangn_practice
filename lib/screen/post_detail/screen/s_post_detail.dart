@@ -3,7 +3,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fast_app_base/common/common/common.dart';
 import 'package:fast_app_base/entity/post/product_post.dart';
 import 'package:fast_app_base/entity/post/simple_product_post.dart';
+import 'package:fast_app_base/screen/post_detail/fragment/f_post_content.dart';
 import 'package:fast_app_base/screen/post_detail/state_manager/product_post_provider.dart';
+import 'package:fast_app_base/screen/post_detail/widget/w_user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,8 +37,9 @@ class PostDetailScreen extends ConsumerWidget {
 
 class _PostDetail extends HookWidget {
   final SimpleProductPost simpleProductPost;
+  final ProductPost? productPost;
 
-  const _PostDetail(this.simpleProductPost);
+  const _PostDetail(this.simpleProductPost, {this.productPost});
 
   @override
   Widget build(BuildContext context) {
@@ -52,10 +55,12 @@ class _PostDetail extends HookWidget {
             ],
           ),
         ),
+        UserProfileWidget(simpleProductPost.product.user, address: simpleProductPost.address),
+        PostContentFragment(simpleProductPost: simpleProductPost, productPost: productPost),
         Container(
           height: context.viewPaddingBottom + context.deviceHeight * 0.075,
           color: Colors.red,
-        )
+        ),
       ],
     );
   }
