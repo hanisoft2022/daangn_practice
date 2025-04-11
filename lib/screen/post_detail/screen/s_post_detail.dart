@@ -29,7 +29,7 @@ class PostDetailScreen extends ConsumerWidget {
       body: productPost.when(
         loading: () => simpleProductPost == null ? const Center(child: CircularProgressIndicator()) : _PostDetail(simpleProductPost!),
         error: (error, stackTrace) => Text(error.toString()),
-        data: (productPost) => _PostDetail(productPost.simpleProductPost),
+        data: (productPost) => _PostDetail(productPost.simpleProductPost, productPost: productPost),
       ),
     );
   }
@@ -75,6 +75,7 @@ class _PostDetail extends HookWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               children: [
@@ -84,13 +85,25 @@ class _PostDetail extends HookWidget {
             ),
             UserProfileWidget(simpleProductPost.product.user, address: simpleProductPost.address),
             PostContentFragment(simpleProductPost: simpleProductPost, productPost: productPost),
+            height20,
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        height: context.viewPaddingBottom + context.deviceHeight * 0.075,
-        color: Colors.red,
-      ),
+      bottomNavigationBar: const PostDetailBottomMenu(),
+    );
+  }
+}
+
+class PostDetailBottomMenu extends StatelessWidget {
+  const PostDetailBottomMenu({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: context.viewPaddingBottom + context.deviceHeight * 0.075,
+      color: Colors.red,
     );
   }
 }

@@ -13,12 +13,15 @@ class PostContentFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         simpleProductPost.product.title.text.size(16).bold.make(),
         height10,
         timeago.format(simpleProductPost.createdAt, locale: context.locale.languageCode).text.size(13).color(context.appColors.lessImportant).make(),
-        simpleProductPost.content.text.size(14).make(),
+        height20,
+        if (productPost == null) const Center(child: CircularProgressIndicator()),
+        if (productPost != null) productPost!.content.text.make(),
       ],
-    );
+    ).p(15);
   }
 }
