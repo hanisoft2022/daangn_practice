@@ -21,12 +21,44 @@ class UserProfileWidget extends StatelessWidget {
           ),
         ),
         width20,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              user.nickname.text.bold.make(),
+              height10,
+              address.simpleAddress.text.size(14).color(context.appColors.lessImportant).make(),
+            ],
+          ),
+        ),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            user.nickname.text.bold.make(),
+            // 귀여운 위젯
+            Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    '${user.temperature}℃'.text.bold.color(Colors.green).make(),
+                    SizedBox(
+                      width: 55,
+                      child: LinearProgressIndicator(
+                        value: 0.365,
+                        color: context.appColors.lessImportant,
+                      ),
+                    ),
+                  ],
+                ),
+                width10,
+                Image.asset(
+                  '$basePath/detail/smile.png',
+                  width: 30,
+                ),
+              ],
+            ),
             height10,
-            address.simpleAddress.text.size(14).color(context.appColors.lessImportant).make(),
+            '매너온도'.text.color(context.appColors.lessImportant).underline.make(),
           ],
         )
       ],

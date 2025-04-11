@@ -1,6 +1,8 @@
+import 'package:fast_app_base/common/common/common.dart';
 import 'package:fast_app_base/entity/post/product_post.dart';
 import 'package:fast_app_base/entity/post/simple_product_post.dart';
 import 'package:flutter/material.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class PostContentFragment extends StatelessWidget {
   final SimpleProductPost simpleProductPost;
@@ -10,6 +12,13 @@ class PostContentFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        simpleProductPost.product.title.text.size(16).bold.make(),
+        height10,
+        timeago.format(simpleProductPost.createdAt, locale: context.locale.languageCode).text.size(13).color(context.appColors.lessImportant).make(),
+        simpleProductPost.content.text.size(14).make(),
+      ],
+    );
   }
 }

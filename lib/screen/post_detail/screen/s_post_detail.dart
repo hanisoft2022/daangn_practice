@@ -35,6 +35,33 @@ class PostDetailScreen extends ConsumerWidget {
   }
 }
 
+class _AppBar extends StatelessWidget {
+  const _AppBar();
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 0,
+      left: 0,
+      right: 0,
+      child: AppBar(
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.share_outlined),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert),
+          )
+        ],
+      ),
+    );
+  }
+}
+
 class _PostDetail extends HookWidget {
   final SimpleProductPost simpleProductPost;
   final ProductPost? productPost;
@@ -45,23 +72,25 @@ class _PostDetail extends HookWidget {
   Widget build(BuildContext context) {
     final pageController = usePageController(initialPage: 0);
 
-    return Column(
-      children: [
-        Expanded(
-          child: Stack(
-            children: [
-              _ImagePager(pageController: pageController, simpleProductPost: simpleProductPost),
-              const _AppBar(),
-            ],
-          ),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                _ImagePager(pageController: pageController, simpleProductPost: simpleProductPost),
+                const _AppBar(),
+              ],
+            ),
+            UserProfileWidget(simpleProductPost.product.user, address: simpleProductPost.address),
+            PostContentFragment(simpleProductPost: simpleProductPost, productPost: productPost),
+          ],
         ),
-        UserProfileWidget(simpleProductPost.product.user, address: simpleProductPost.address),
-        PostContentFragment(simpleProductPost: simpleProductPost, productPost: productPost),
-        Container(
-          height: context.viewPaddingBottom + context.deviceHeight * 0.075,
-          color: Colors.red,
-        ),
-      ],
+      ),
+      bottomNavigationBar: Container(
+        height: context.viewPaddingBottom + context.deviceHeight * 0.075,
+        color: Colors.red,
+      ),
     );
   }
 }
@@ -105,33 +134,6 @@ class _ImagePager extends StatelessWidget {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class _AppBar extends StatelessWidget {
-  const _AppBar();
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      top: 0,
-      left: 0,
-      right: 0,
-      child: AppBar(
-        backgroundColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.share_outlined),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.more_vert),
-          )
         ],
       ),
     );
