@@ -5,6 +5,7 @@ import 'package:fast_app_base/entity/post/product_post.dart';
 import 'package:fast_app_base/entity/post/simple_product_post.dart';
 import 'package:fast_app_base/screen/post_detail/fragment/f_post_content.dart';
 import 'package:fast_app_base/screen/post_detail/state_manager/product_post_provider.dart';
+import 'package:fast_app_base/screen/post_detail/widget/post_detail_bottom_menu_widget.dart';
 import 'package:fast_app_base/screen/post_detail/widget/w_user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -89,21 +90,9 @@ class _PostDetail extends HookWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const PostDetailBottomMenu(),
-    );
-  }
-}
-
-class PostDetailBottomMenu extends StatelessWidget {
-  const PostDetailBottomMenu({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: context.viewPaddingBottom + context.deviceHeight * 0.075,
-      color: Colors.red,
+      bottomNavigationBar: PostDetailBottomMenuWidget(
+        price: simpleProductPost.product.price,
+      ),
     );
   }
 }
