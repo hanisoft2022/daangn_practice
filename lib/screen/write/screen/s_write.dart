@@ -52,19 +52,17 @@ class WriteScreen extends HookConsumerWidget {
               children: [
                 ImageSelectWidget(
                   imageUrls.value,
-                  onTap: () async {
-                    showDialog(
-                      context: context,
-                      builder: (context) => PhotoPickerDialog(
-                        onImageSourceSelected: (ImageSource source) async {
-                          final XFile? image = await ImagePicker().pickImage(source: source);
-                          if (image != null) {
-                            imageUrls.value = [...imageUrls.value, image.path];
-                          }
-                        },
-                      ),
-                    );
-                  },
+                  onTap: () async => showDialog(
+                    context: context,
+                    builder: (context) => PhotoPickerDialog(
+                      onImageSourceSelected: (ImageSource source) async {
+                        final XFile? image = await ImagePicker().pickImage(source: source);
+                        if (image != null) {
+                          imageUrls.value = [...imageUrls.value, image.path];
+                        }
+                      },
+                    ),
+                  ),
                 ),
                 TitleEditor(titleController),
                 height10,
