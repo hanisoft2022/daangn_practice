@@ -30,7 +30,10 @@ class PostDetailScreen extends ConsumerWidget {
       body: productPost.when(
         loading: () => simpleProductPost == null ? const Center(child: CircularProgressIndicator()) : _PostDetail(simpleProductPost!),
         error: (error, stackTrace) => Text(error.toString()),
-        data: (productPost) => _PostDetail(productPost.simpleProductPost, productPost: productPost),
+        data: (productPost) => _PostDetail(
+          simpleProductPost ?? productPost.simpleProductPost,
+          productPost: productPost,
+        ),
       ),
     );
   }
@@ -123,19 +126,20 @@ class _ImagePager extends StatelessWidget {
                 )
                 .toList(),
           ),
-          Align(
-            alignment: const Alignment(0, 0.9),
-            child: SmoothPageIndicator(
-              controller: pageController,
-              count: simpleProductPost.product.imageUrls.length,
-              effect: const ExpandingDotsEffect(
-                dotWidth: 10,
-                dotHeight: 10,
-                dotColor: Colors.grey,
-                activeDotColor: Colors.white,
+          if (simpleProductPost.product.imageUrls.length > 1)
+            Align(
+              alignment: const Alignment(0, 0.9),
+              child: SmoothPageIndicator(
+                controller: pageController,
+                count: simpleProductPost.product.imageUrls.length,
+                effect: const ExpandingDotsEffect(
+                  dotWidth: 10,
+                  dotHeight: 10,
+                  dotColor: Colors.grey,
+                  activeDotColor: Colors.white,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );

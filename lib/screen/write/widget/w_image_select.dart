@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fast_app_base/common/common/common.dart';
 import 'package:flutter/material.dart';
 
@@ -48,11 +47,11 @@ class ImageSelectWidget extends StatelessWidget {
                 ),
               ),
             ),
-            ...imageUrlList
-                .map(
-                  (e) => CachedNetworkImage(imageUrl: e),
-                )
-                .toList()
+            // ...imageUrlList
+            //     .map(
+            //       (e) => CachedNetworkImage(imageUrl: e),
+            //     )
+            //     .toList()
           ],
         ),
       ),

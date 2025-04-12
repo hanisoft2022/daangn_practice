@@ -5,6 +5,7 @@ import 'package:fast_app_base/entity/product/product.dart';
 import 'package:fast_app_base/entity/product/product_status.dart';
 import 'package:fast_app_base/entity/user/address.dart';
 import 'package:fast_app_base/screen/main/tab/home/state_manager/provider.dart';
+import 'package:fast_app_base/screen/post_detail/screen/s_post_detail.dart';
 import 'package:fast_app_base/screen/write/editor/description_editor.dart';
 import 'package:fast_app_base/screen/write/editor/price_editor.dart';
 import 'package:fast_app_base/screen/write/editor/title_editor.dart';
@@ -72,24 +73,26 @@ class WriteScreen extends HookConsumerWidget {
                       final int price = int.parse(priceController.text);
                       final String description = descriptionController.text;
                       isLoading.value = !isLoading.value;
-                      postNotifier.addPost(
-                        SimpleProductPost(
-                          1,
+                      final simpleProductPost = SimpleProductPost(
+                        8,
+                        user: user2,
+                        product: Product(
                           user: user2,
-                          product: Product(
-                            user: user2,
-                            title: title,
-                            price: price,
-                            status: ProductStatus.normal,
-                            imageUrls: imageUrls,
-                          ),
-                          content: description,
-                          address: Address('서울시 특별한 주소', '다트동'),
-                          chatCount: 0,
-                          likeCount: 1,
-                          createdAt: DateTime.now(),
+                          title: title,
+                          price: price,
+                          status: ProductStatus.normal,
+                          imageUrls: imageUrls,
                         ),
+                        content: description,
+                        address: Address('서울시 특별한 주소', '다트동'),
+                        chatCount: 0,
+                        likeCount: 1,
+                        createdAt: DateTime.now(),
                       );
+                      postNotifier.addPost(simpleProductPost);
+
+                      Nav.pop(context);
+                      Nav.push(PostDetailScreen(id: simpleProductPost.id, simpleProductPost: simpleProductPost));
                     }
                   : null,
             ),
