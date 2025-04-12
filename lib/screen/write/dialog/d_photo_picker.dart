@@ -15,10 +15,7 @@ class PhotoPickerDialog extends StatelessWidget {
     return SimpleDialog(
       children: [
         TextButton.icon(
-          style: TextButton.styleFrom(
-            foregroundColor: Colors.white,
-            iconSize: 40,
-          ),
+          style: TextButton.styleFrom(foregroundColor: Colors.white, iconSize: 40),
           icon: const Icon(Icons.camera_alt_outlined),
           label: const Text('카메라', style: TextStyle(fontSize: 20)),
           onPressed: () {
@@ -28,10 +25,7 @@ class PhotoPickerDialog extends StatelessWidget {
         ),
         const Divider().pSymmetric(h: 10),
         TextButton.icon(
-          style: TextButton.styleFrom(
-            foregroundColor: Colors.white,
-            iconSize: 40,
-          ),
+          style: TextButton.styleFrom(foregroundColor: Colors.white, iconSize: 40),
           icon: const Icon(Icons.image_outlined),
           label: const Text('갤러리', style: TextStyle(fontSize: 20)),
           onPressed: () {
