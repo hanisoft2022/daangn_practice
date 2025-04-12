@@ -6,6 +6,7 @@ import 'package:fast_app_base/entity/product/product_status.dart';
 import 'package:fast_app_base/entity/user/address.dart';
 import 'package:fast_app_base/screen/main/tab/home/state_manager/provider.dart';
 import 'package:fast_app_base/screen/post_detail/screen/s_post_detail.dart';
+import 'package:fast_app_base/screen/write/dialog/d_photo_picker.dart';
 import 'package:fast_app_base/screen/write/editor/description_editor.dart';
 import 'package:fast_app_base/screen/write/editor/price_editor.dart';
 import 'package:fast_app_base/screen/write/editor/title_editor.dart';
@@ -15,13 +16,12 @@ import 'package:fast_app_base/screen/write/widget/w_write_screen_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 
 class WriteScreen extends HookConsumerWidget {
-  WriteScreen({super.key});
-
-  final List<String> imageUrls = [];
+  const WriteScreen({super.key});
 
   static const double buttonHeight = 50.0;
 
@@ -31,7 +31,7 @@ class WriteScreen extends HookConsumerWidget {
     final priceController = useTextEditingController();
     final descriptionController = useTextEditingController();
     final isLoading = useState(false);
-    final ImagePicker picker = ImagePicker();
+    final imageUrls = useState<List<String>>([]);
 
     final postNotifier = ref.read(postProvider.notifier);
 
@@ -51,12 +51,19 @@ class WriteScreen extends HookConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ImageSelectWidget(
-                  imageUrls,
+                  imageUrls.value,
                   onTap: () async {
-                    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-                    if (image != null) {
-                      imageUrls.add(image.path);
-                    }
+                    showDialog(
+                      context: context,
+                      builder: (context) => PhotoPickerDialog(
+                        onImageSourceSelected: (ImageSource source) async {
+                          final XFile? image = await ImagePicker().pickImage(source: source);
+                          if (image != null) {
+                            imageUrls.value.add(image.path);
+                          }
+                        },
+                      ),
+                    );
                   },
                 ),
                 TitleEditor(titleController),
@@ -88,7 +95,7 @@ class WriteScreen extends HookConsumerWidget {
                           title: title,
                           price: price,
                           status: ProductStatus.normal,
-                          imageUrls: imageUrls,
+                          imageUrls: imageUrls.value,
                         ),
                         content: description,
                         address: Address('서울시 특별한 주소', '다트동'),
