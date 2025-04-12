@@ -59,7 +59,7 @@ class WriteScreen extends HookConsumerWidget {
                         onImageSourceSelected: (ImageSource source) async {
                           final XFile? image = await ImagePicker().pickImage(source: source);
                           if (image != null) {
-                            imageUrls.value.add(image.path);
+                            imageUrls.value = [...imageUrls.value, image.path];
                           }
                         },
                       ),

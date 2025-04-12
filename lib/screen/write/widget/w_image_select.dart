@@ -2,10 +2,10 @@ import 'package:fast_app_base/common/common/common.dart';
 import 'package:flutter/material.dart';
 
 class ImageSelectWidget extends StatelessWidget {
-  final List<String> imageUrlList;
+  final List<String> imageUrls;
   final VoidCallback onTap;
 
-  const ImageSelectWidget(this.imageUrlList, {super.key, required this.onTap});
+  const ImageSelectWidget(this.imageUrls, {super.key, required this.onTap});
   @override
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(10);
@@ -36,7 +36,7 @@ class ImageSelectWidget extends StatelessWidget {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: imageUrlList.length.toString(),
+                            text: imageUrls.length.toString(),
                             style: const TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
                           ),
                           const TextSpan(text: '/10'),
