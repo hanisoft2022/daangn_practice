@@ -33,10 +33,10 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // _ImageSelectWidget(imageList),
-            // _TitleEditor(titleController),
-            // _PriceEditor(priceController),
-            // _DescriptionEditor(descriptionController),
+            _ImageSelectWidget(imageList),
+            _TitleEditor(titleController),
+            _PriceEditor(priceController),
+            _DescriptionEditor(descriptionController),
           ],
         ),
       ),
@@ -53,3 +53,11 @@ class _WriteScreenState extends ConsumerState<WriteScreen> {
     );
   }
 }
+
+class _ImageSelectWidget {}
+
+class _TitleEditor {}
+
+class _PriceEditor {}
+
+class _DescriptionEditor {}
