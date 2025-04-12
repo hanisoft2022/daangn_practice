@@ -96,15 +96,3 @@ final simpleProductPost3 = SimpleProductPost(
   likeCount: 19,
   createdAt: DateTime.now().subtract(2.days),
 );
-
-final List<SimpleProductPost> posts = [
-  simpleProductPost1,
-  simpleProductPost2,
-  simpleProductPost3,
-  simpleProductPost1,
-  simpleProductPost2,
-  simpleProductPost3,
-  simpleProductPost1,
-  simpleProductPost2,
-  simpleProductPost3
-];

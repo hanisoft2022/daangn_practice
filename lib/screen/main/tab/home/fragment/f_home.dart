@@ -1,55 +1,48 @@
 import 'package:fast_app_base/common/common/common.dart';
-import 'package:fast_app_base/entity/dummy/dummies.dart';
+
 import 'package:fast_app_base/screen/main/fab/w_floating_daangn_button.dart';
 import 'package:fast_app_base/screen/main/fab/w_floating_daangn_button.riverpod.dart';
+import 'package:fast_app_base/screen/main/tab/home/state_manager/provider.dart';
 import 'package:fast_app_base/screen/main/tab/home/widget/w_product_post_item.dart';
 import 'package:fast_app_base/screen/notification/screen/s_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:badges/badges.dart' as badges;
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class HomeFragment extends ConsumerStatefulWidget {
+import 'package:badges/badges.dart' as badges;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+class HomeFragment extends HookConsumerWidget {
   const HomeFragment({super.key});
 
   @override
-  ConsumerState<HomeFragment> createState() => _HomeFragmentState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final posts = ref.watch(postProvider);
+    final scrollController = useScrollController();
+    final title = useState('다트동');
 
-class _HomeFragmentState extends ConsumerState<HomeFragment> {
-  final scrollController = ScrollController();
-  String title = '다트동';
-  @override
-  void initState() {
-    super.initState();
-    scrollController.addListener(
-      () {
-        final floatingDaangnButtonState = ref.read(floatingDaangnButtonStateProvider);
+    useEffect(() {
+      scrollController.addListener(
+        () {
+          final floatingDaangnButtonState = ref.read(floatingDaangnButtonStateProvider);
 
-        // 1. 스크롤 방향 감지
-        final direction = scrollController.position.userScrollDirection;
-        final isSmall = floatingDaangnButtonState.isSmall;
+          // 1. 스크롤 방향 감지
+          final direction = scrollController.position.userScrollDirection;
+          final isSmall = floatingDaangnButtonState.isSmall;
 
-        // 2. 아래로 스크롤 시 isSmall = true
-        if (direction == ScrollDirection.reverse && !isSmall) {
-          ref.read(floatingDaangnButtonStateProvider.notifier).changeButtonSize(isSmall: true);
-        }
-        // 3. 위로 스크롤 시 isSmall = false
-        else if (direction == ScrollDirection.forward && isSmall) {
-          ref.read(floatingDaangnButtonStateProvider.notifier).changeButtonSize(isSmall: false);
-        }
-      },
-    );
-  }
+          // 2. 아래로 스크롤 시 isSmall = true
+          if (direction == ScrollDirection.reverse && !isSmall) {
+            ref.read(floatingDaangnButtonStateProvider.notifier).changeButtonSize(isSmall: true);
+          }
+          // 3. 위로 스크롤 시 isSmall = false
+          else if (direction == ScrollDirection.forward && isSmall) {
+            ref.read(floatingDaangnButtonStateProvider.notifier).changeButtonSize(isSmall: false);
+          }
+        },
+      );
+      return () => scrollController.removeListener(() {});
+    }, [ref]);
 
-  @override
-  void dispose() {
-    scrollController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Column(
       children: [
         AppBar(
@@ -57,25 +50,7 @@ class _HomeFragmentState extends ConsumerState<HomeFragment> {
           surfaceTintColor: Colors.transparent,
           centerTitle: false,
           automaticallyImplyLeading: false,
-          title:
-              // ! PopupMenuButton 사용하면 렌더링 이슈로 작동 안 됨.
-              // ! 이유는 모르겠음..
-              // PopupMenuButton<String>(
-              //   initialValue: title,
-              //   onSelected: (value) {
-              //     setState(() => title = value);
-              //   },
-              //   itemBuilder: (context) => ['다트동', '앱동', '쇼핑동']
-              //       .map(
-              //         (e) => PopupMenuItem(
-              //           value: e,
-              //           child: e.text.make(),
-              //         ),
-              //       )
-              //       .toList(),
-              //   child: title.text.make(),
-              // ),
-              MenuAnchor(
+          title: MenuAnchor(
             builder: (BuildContext context, MenuController controller, Widget? child) {
               return GestureDetector(
                 onTap: () {
@@ -88,7 +63,7 @@ class _HomeFragmentState extends ConsumerState<HomeFragment> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Text(title.value, style: const TextStyle(fontWeight: FontWeight.bold)),
                     const Icon(Icons.arrow_drop_down),
                   ],
                 ),
@@ -97,7 +72,9 @@ class _HomeFragmentState extends ConsumerState<HomeFragment> {
             menuChildren: ['다트동', '앱동', '쇼핑동']
                 .map(
                   (e) => MenuItemButton(
-                    onPressed: () => setState(() => title = e),
+                    onPressed: () {
+                      title.value = e;
+                    },
                     child: Text(e),
                   ),
                 )
@@ -117,7 +94,7 @@ class _HomeFragmentState extends ConsumerState<HomeFragment> {
                 child: const Icon(Icons.notifications_none_rounded),
               ),
             ),
-            width10
+            width10,
           ],
         ),
         Expanded(
