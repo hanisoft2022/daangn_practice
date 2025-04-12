@@ -16,11 +16,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 class WriteScreen extends HookConsumerWidget {
   WriteScreen({super.key});
 
-  final List<String> imageUrls = [getDummyProfileUrl(442)];
+  final List<String> imageUrls = [];
 
   static const double buttonHeight = 50.0;
 
@@ -30,6 +31,7 @@ class WriteScreen extends HookConsumerWidget {
     final priceController = useTextEditingController();
     final descriptionController = useTextEditingController();
     final isLoading = useState(false);
+    final ImagePicker picker = ImagePicker();
 
     final postNotifier = ref.read(postProvider.notifier);
 
@@ -50,7 +52,12 @@ class WriteScreen extends HookConsumerWidget {
               children: [
                 ImageSelectWidget(
                   imageUrls,
-                  onTap: () {},
+                  onTap: () async {
+                    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+                    if (image != null) {
+                      imageUrls.add(image.path);
+                    }
+                  },
                 ),
                 TitleEditor(titleController),
                 height10,
