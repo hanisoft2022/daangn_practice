@@ -3,7 +3,10 @@ import 'package:fast_app_base/screen/write/screen/s_write.dart';
 import 'package:flutter/material.dart';
 
 class SubmitButton extends StatelessWidget {
-  const SubmitButton({
+  final VoidCallback onPressed;
+
+  const SubmitButton(
+    this.onPressed, {
     super.key,
   });
 
@@ -16,7 +19,7 @@ class SubmitButton extends StatelessWidget {
         foregroundColor: Colors.white,
         backgroundColor: Colors.deepOrangeAccent,
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: '작성 완료'.text.size(18).bold.make(),
     );
   }

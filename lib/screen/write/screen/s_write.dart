@@ -37,9 +37,9 @@ class WriteScreen extends HookWidget {
                 TitleEditor(titleController),
                 height10,
                 PriceEditor(priceController),
-                height10,
+                height30,
                 DescriptionEditor(descriptionController),
-                Gap(context.viewPaddingBottom + buttonHeight + 10),
+                Gap(context.viewPaddingBottom + buttonHeight + 20),
               ],
             ).pSymmetric(h: 10),
           ),
@@ -47,7 +47,11 @@ class WriteScreen extends HookWidget {
             bottom: context.viewPaddingBottom,
             left: 10,
             right: 10,
-            child: const SubmitButton(),
+            child: SubmitButton(() {
+              final title = titleController.text;
+              final int price = int.parse(priceController.text);
+              final description = descriptionController.text;
+            }),
           ),
         ],
       ),
