@@ -7,6 +7,7 @@ class TitleEditor extends StatelessWidget {
   const TitleEditor(this.controller, {super.key});
   @override
   Widget build(BuildContext context) {
+    const outlineInputBorder = OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.all(Radius.circular(10)));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -14,11 +15,12 @@ class TitleEditor extends StatelessWidget {
         height10,
         TextField(
           controller: controller,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey), borderRadius: BorderRadius.all(Radius.circular(10))),
+          decoration: InputDecoration(
+            border: outlineInputBorder,
+            focusedBorder: outlineInputBorder.copyWith(borderSide: const BorderSide(color: Colors.deepOrangeAccent)),
             hintText: '제목',
           ),
-        )
+        ),
       ],
     );
   }

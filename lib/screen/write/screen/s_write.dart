@@ -22,6 +22,7 @@ class WriteScreen extends HookWidget {
     final descriptionController = useTextEditingController();
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: const WriteScreenAppBarWidget(),
       body: Stack(
         children: [
@@ -36,6 +37,7 @@ class WriteScreen extends HookWidget {
                 TitleEditor(titleController),
                 height10,
                 PriceEditor(priceController),
+                height10,
                 DescriptionEditor(descriptionController),
                 Gap(context.viewPaddingBottom + buttonHeight + 10),
               ],
