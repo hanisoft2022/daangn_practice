@@ -1,31 +1,30 @@
 import 'package:fast_app_base/common/common/common.dart';
+import 'package:fast_app_base/screen/write/widget/w_image_select.dart';
 import 'package:flutter/material.dart';
 
 class SelectImageButtonWidget extends StatelessWidget {
   const SelectImageButtonWidget({
     super.key,
-    required this.borderRadius,
     required this.onTap,
     required this.imageUrls,
   });
 
-  final BorderRadius borderRadius;
   final VoidCallback onTap;
   final List<String> imageUrls;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      customBorder: RoundedRectangleBorder(borderRadius: borderRadius),
+      customBorder: const RoundedRectangleBorder(borderRadius: ImageSelectWidget.borderRadius),
       onTap: onTap,
       child: Container(
-        height: 75,
-        width: 75,
+        height: ImageSelectWidget.imageHeight,
+        width: ImageSelectWidget.imageWidth,
         decoration: BoxDecoration(
             border: Border.all(
               color: context.appColors.divider,
             ),
-            borderRadius: borderRadius),
+            borderRadius: ImageSelectWidget.borderRadius),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
