@@ -15,7 +15,10 @@ class PostContentFragment extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        simpleProductPost.product.title.text.size(16).bold.make(),
+        Hero(
+          tag: '${simpleProductPost.id}_title',
+          child: Material(child: simpleProductPost.product.title.text.size(16).bold.make()),
+        ),
         height10,
         timeago.format(simpleProductPost.createdAt, locale: context.locale.languageCode).text.size(13).color(context.appColors.lessImportant).make(),
         height20,

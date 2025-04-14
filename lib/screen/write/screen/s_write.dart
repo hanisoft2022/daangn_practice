@@ -52,7 +52,7 @@ class WriteScreen extends HookConsumerWidget {
               children: [
                 ImageSelectWidget(
                   imageUrls.value,
-                  onTap: () async => showDialog(
+                  onSelectImageTap: () async => showDialog(
                     context: context,
                     builder: (context) => PhotoPickerDialog(
                       onImageSourceSelected: (ImageSource source) async {
@@ -63,6 +63,9 @@ class WriteScreen extends HookConsumerWidget {
                       },
                     ),
                   ),
+                  onTapImageRemove: (imageUrl) => {
+                    imageUrls.value = List<String>.from(imageUrls.value)..remove(imageUrl),
+                  },
                 ),
                 TitleEditor(titleController),
                 height10,

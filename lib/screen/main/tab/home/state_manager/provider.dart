@@ -8,12 +8,12 @@ class PostNotifier extends StateNotifier<List<SimpleProductPost>> {
           simpleProductPost1,
           simpleProductPost2,
           simpleProductPost3,
-          simpleProductPost1,
-          simpleProductPost2,
-          simpleProductPost3,
-          simpleProductPost1,
-          simpleProductPost2,
-          simpleProductPost3,
+          // simpleProductPost1,
+          // simpleProductPost2,
+          // simpleProductPost3,
+          // simpleProductPost1,
+          // simpleProductPost2,
+          // simpleProductPost3,
         ]);
 
   addPost(SimpleProductPost simpleProductPost) {

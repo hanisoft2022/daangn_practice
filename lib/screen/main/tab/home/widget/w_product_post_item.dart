@@ -24,11 +24,14 @@ class ProductPostItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: CachedNetworkImage(
-                imageUrl: simpleProductPost.product.imageUrls[0],
-                width: 150,
+            Hero(
+              tag: '${simpleProductPost.id}_${simpleProductPost.product.imageUrls[0]}',
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: CachedNetworkImage(
+                  imageUrl: simpleProductPost.product.imageUrls[0],
+                  width: 150,
+                ),
               ),
             ),
             width20,
@@ -36,7 +39,10 @@ class ProductPostItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  simpleProductPost.product.title.text.size(16).bold.make(),
+                  Hero(
+                    tag: '${simpleProductPost.id}_title',
+                    child: Material(child: simpleProductPost.product.title.text.size(16).bold.make()),
+                  ),
                   Row(
                     children: [
                       simpleProductPost.address.simpleAddress.text.size(14).color(context.appColors.lessImportant).make(),
