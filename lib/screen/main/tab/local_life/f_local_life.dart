@@ -4,6 +4,9 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class LocalLifeFragment extends ConsumerStatefulWidget {
+  static const routePath = '/main/localLife';
+  static const routeNamed = 'localLife';
+
   const LocalLifeFragment({super.key});
 
   @override

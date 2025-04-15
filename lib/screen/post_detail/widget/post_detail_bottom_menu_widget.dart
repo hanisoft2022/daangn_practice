@@ -48,8 +48,8 @@ class PostDetailBottomMenuWidget extends StatelessWidget {
                       ),
                       TextButton(
                         onPressed: () {},
-                        child: '가격 제안하기'.text.color(Colors.deepOrangeAccent).bold.make(),
                         style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                        child: '가격 제안하기'.text.color(Colors.deepOrangeAccent).bold.make(),
                       ),
                     ],
                   ),

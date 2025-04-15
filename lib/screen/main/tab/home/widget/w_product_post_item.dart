@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fast_app_base/common/common/common.dart';
 import 'package:fast_app_base/entity/post/simple_product_post.dart';
-import 'package:fast_app_base/screen/post_detail/screen/s_post_detail.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:timeago/timeago.dart' as timeago;
 
 class ProductPostItem extends StatelessWidget {
@@ -13,12 +14,15 @@ class ProductPostItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Nav.push(
-        PostDetailScreen(
-          id: simpleProductPost.id,
-          simpleProductPost: simpleProductPost,
-        ),
-      ),
+      onTap: () {
+        context.go('/main/localLife/${simpleProductPost.id}', extra: simpleProductPost);
+
+        //   Nav.push(
+        //   PostDetailScreen(
+        //     id: simpleProductPost.id,
+        //     simpleProductPost: simpleProductPost,
+        //   ),
+      },
       child: SizedBox(
         height: 180,
         child: Row(

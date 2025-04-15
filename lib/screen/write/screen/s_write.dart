@@ -23,6 +23,9 @@ import 'package:image_picker/image_picker.dart';
 class WriteScreen extends HookConsumerWidget {
   const WriteScreen({super.key});
 
+  static const String routePath = '/write';
+  static const String routeName = 'write';
+
   static const double buttonHeight = 50.0;
 
   @override

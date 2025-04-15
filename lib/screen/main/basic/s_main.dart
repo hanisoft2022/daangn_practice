@@ -11,7 +11,12 @@ import 'w_menu_drawer.dart';
 final currentTapProvider = StateProvider<TabItem>((ref) => TabItem.home);
 
 class MainScreen extends ConsumerStatefulWidget {
-  const MainScreen({super.key});
+  final TabItem firstTab;
+
+  const MainScreen({
+    super.key,
+    this.firstTab = TabItem.home,
+  });
 
   @override
   ConsumerState<MainScreen> createState() => MainScreenState();
@@ -34,6 +39,17 @@ class MainScreenState extends ConsumerState<MainScreen> with SingleTickerProvide
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant MainScreen oldWidget) {
+    if (widget.firstTab != oldWidget.firstTab) {
+      delay(() {
+        ref.read(currentTapProvider.notifier).update((state) => widget.firstTab);
+      }, 0.ms);
+    }
+    // ref.read(currentTapProvider.notifier).update((state) => widget.firstTab);
+    super.didUpdateWidget(oldWidget);
   }
 
   @override

@@ -1,9 +1,11 @@
 import 'package:fast_app_base/common/common/common.dart';
 import 'package:fast_app_base/screen/main/basic/s_main.dart';
 import 'package:fast_app_base/screen/main/fab/w_floating_daangn_button.riverpod.dart';
+import 'package:fast_app_base/screen/main/tab/local_life/f_local_life.dart';
 import 'package:fast_app_base/screen/write/screen/s_write.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class FloatingDaangnButton extends ConsumerWidget {
   // ignore: constant_identifier_names
@@ -49,7 +51,12 @@ class FloatingDaangnButton extends ConsumerWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          _floatItem('알바', '$basePath/fab/fab_01.png'),
+                          GestureDetector(
+                              onTap: () {
+                                // ! 실험용이므로 이후 이 부분 변경 or 삭제
+                                context.go(LocalLifeFragment.routePath);
+                              },
+                              child: _floatItem('알바', '$basePath/fab/fab_01.png')),
                           _floatItem('과외/클래스', '$basePath/fab/fab_02.png'),
                           _floatItem('농수산물', '$basePath/fab/fab_03.png'),
                           _floatItem('부동산', '$basePath/fab/fab_04.png'),
@@ -60,7 +67,7 @@ class FloatingDaangnButton extends ConsumerWidget {
                     height10,
                     GestureDetector(
                       onTap: () {
-                        Nav.push(WriteScreen());
+                        context.pushNamed(WriteScreen.routeName);
                       },
                       child: Container(
                         width: 160,
