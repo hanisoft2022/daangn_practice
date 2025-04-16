@@ -52,6 +52,7 @@ class AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    print('LifeCycleState: $state');
     switch (state) {
       case AppLifecycleState.resumed:
         App.isForeground = true;
@@ -63,7 +64,7 @@ class AppState extends State<App> with WidgetsBindingObserver {
         break;
       case AppLifecycleState.detached:
         break;
-      case AppLifecycleState.hidden: //Flutter 3.13 이하 버전을 쓰신다면 해당 라인을 삭제해주세요.
+      case AppLifecycleState.hidden:
         break;
     }
     super.didChangeAppLifecycleState(state);
