@@ -1,7 +1,9 @@
 // ignore_for_file: avoid_print
 
+import 'package:fast_app_base/basic/app.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 
 class FcmManager {
   static void requestPermission() {
@@ -22,6 +24,13 @@ class FcmManager {
 
       if (message.notification != null) {
         print('Message also contained a notification: ${message.notification}');
+        App.scaffoldMessengerKey.currentState?.showSnackBar(
+          SnackBar(
+            content: Text(
+              message.notification!.title ?? '알림',
+            ),
+          ),
+        );
       }
     });
 
