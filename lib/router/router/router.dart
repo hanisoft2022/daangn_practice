@@ -4,11 +4,9 @@ import 'package:fast_app_base/entity/post/simple_product_post.dart';
 import 'package:fast_app_base/router/transition/transition.dart';
 import 'package:fast_app_base/screen/main/basic/s_main.dart';
 import 'package:fast_app_base/screen/main/tab/basic/tab_item.dart';
-import 'package:fast_app_base/screen/main/tab/local_life/f_local_life.dart';
 import 'package:fast_app_base/screen/post_detail/screen/s_post_detail.dart';
 import 'package:fast_app_base/screen/write/screen/s_write.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const ValueKey<String> _scaffoldKey = ValueKey<String>('App scaffold');
@@ -31,6 +29,7 @@ final GoRouter router = GoRouter(
                 return TextButton(
                   onPressed: () async {
                     await ref.read(bookstoreAuthProvider.notifier).signIn('id', 'pw');
+                    // ignore: use_build_context_synchronously
                     context.go('/main/home'); // 직접 이동
                   },
                   child: '로그인'.text.make(),

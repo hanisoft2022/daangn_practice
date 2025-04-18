@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:fast_app_base/screen/opensource/s_opensource.dart';
 import 'package:flutter/foundation.dart';
@@ -45,7 +47,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
               padding: const EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(topRight: Radius.circular(5), bottomRight: Radius.circular(5)),
-                  color: context.colors.background),
+                  color: context.colors.surface),
               child: isSmallScreen(context)
                   ? SingleChildScrollView(
                       child: getMenus(context),

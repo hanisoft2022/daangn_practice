@@ -24,7 +24,7 @@ class AppState extends State<App> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     FcmManager.requestPermission();
-    FcmManager.getToken();
+    FcmManager.init();
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -56,6 +56,7 @@ class AppState extends State<App> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
+    // ignore: avoid_print
     print('LifeCycleState: $state');
     switch (state) {
       case AppLifecycleState.resumed:

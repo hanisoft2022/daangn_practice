@@ -5,7 +5,6 @@ import 'package:fast_app_base/screen/main/tab/local_life/f_local_life.dart';
 import 'package:fast_app_base/screen/write/screen/s_write.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 class FloatingDaangnButton extends ConsumerWidget {
   // ignore: constant_identifier_names
