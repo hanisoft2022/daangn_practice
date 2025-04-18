@@ -789,14 +789,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.0"
-  isar_flutter_libs:
-    dependency: "direct main"
-    description:
-      name: isar_flutter_libs
-      sha256: "8dcfb6889e68d9f0ad9980d77b3903782811645d848786e6ea6518ea6058e45d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.0"
   js:
     dependency: transitive
     description:
@@ -821,14 +813,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.9.4"
-  keyboard_utils_fork:
-    dependency: "direct main"
-    description:
-      name: keyboard_utils_fork
-      sha256: "8cd85549a8dd5dcf4aed09057430fbbea875c8cc0b9c0ddc8f85964da49fd7da"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.4"
   leak_tracker:
     dependency: transitive
     description:

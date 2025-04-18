@@ -1,6 +1,6 @@
 import 'package:fast_app_base/common/common/cli_common.dart';
 import 'package:fast_app_base/common/common/common.dart';
-import 'package:fast_app_base/common/util/etc/app_keyboard_util.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -37,7 +37,6 @@ class PriceEditor extends HookWidget {
                 controller.clear();
                 isSellMode.value = true;
                 Future.delayed(5.ms);
-                AppKeyboardUtil.show(context, priceNode);
               },
               style: isSellMode.value ? transactionSeletectButtonStyle : transactionUnseletectButtonStyle,
               child: '판매하기'.text.bold.make(),

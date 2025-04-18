@@ -1,6 +1,8 @@
 import 'package:fast_app_base/common/common/common.dart';
+import 'package:fast_app_base/common/fcm/fcm_manager.dart';
 import 'package:fast_app_base/router/router/router.dart';
 import 'package:fast_app_base/common/theme/etc/custom_theme_app.dart';
+
 import 'package:flutter/material.dart';
 
 import '../common/theme/etc/custom_theme.dart';
@@ -21,6 +23,8 @@ class AppState extends State<App> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    FcmManager.requestPermission();
+    FcmManager.getToken();
     WidgetsBinding.instance.addObserver(this);
   }
 
