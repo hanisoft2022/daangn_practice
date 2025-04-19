@@ -2,13 +2,12 @@
 
 import 'package:fast_app_base/basic/app.dart';
 import 'package:fast_app_base/common/common/common.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class FcmManager {
-  static void requestPermission() {
-    FirebaseMessaging.instance.requestPermission();
+  static void requestPermission() async {
+    await FirebaseMessaging.instance.requestPermission();
   }
 
   static void init() async {
@@ -45,15 +44,18 @@ class FcmManager {
     );
 
     // * Background messages
-    @pragma('vm:entry-point')
-    Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-      // If you're going to use other Firebase services in the background, such as Firestore,
-      // make sure you call `initializeApp` before using other Firebase services.
-      await Firebase.initializeApp();
+    FirebaseMessaging.onMessageOpenedApp.listen(
+      (RemoteMessage message) {
+        App.navigatorkey.currentContext?.go(message.data['deepLinkTest']);
+      },
+    );
 
-      print("Handling a background message: ${message.messageId}");
+    // * Terminated messages
+    RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
+    if (initialMessage != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        App.navigatorkey.currentContext?.go(initialMessage.data['deepLinkTest']);
+      });
     }
-
-    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   }
 }
