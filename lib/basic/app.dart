@@ -12,6 +12,7 @@ class App extends StatefulWidget {
   static const defaultTheme = CustomTheme.dark;
   static bool isForeground = true;
   static final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey = GlobalKey();
+  static final navigatorkey = GlobalKey<NavigatorState>();
 
   const App({super.key});
 

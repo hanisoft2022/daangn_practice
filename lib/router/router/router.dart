@@ -1,4 +1,5 @@
 import 'package:fast_app_base/auth/auth.dart';
+import 'package:fast_app_base/basic/app.dart';
 import 'package:fast_app_base/common/common/common.dart';
 import 'package:fast_app_base/entity/post/simple_product_post.dart';
 import 'package:fast_app_base/router/transition/transition.dart';
@@ -12,6 +13,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 const ValueKey<String> _scaffoldKey = ValueKey<String>('App scaffold');
 
 final GoRouter router = GoRouter(
+  navigatorKey: App.navigatorkey,
   routes: <GoRoute>[
     GoRoute(
       path: '/',
