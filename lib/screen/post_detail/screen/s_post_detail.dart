@@ -119,12 +119,9 @@ class _ImagePager extends StatelessWidget {
             controller: pageController,
             children: simpleProductPost.product.imageUrls
                 .map(
-                  (imageUrl) => Hero(
-                    tag: '${simpleProductPost.id}_$imageUrl',
-                    child: CachedNetworkImage(
-                      imageUrl: imageUrl,
-                      fit: BoxFit.cover,
-                    ),
+                  (imageUrl) => CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    fit: BoxFit.cover,
                   ),
                 )
                 .toList(),

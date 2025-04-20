@@ -25,7 +25,7 @@ class DaangnApi {
   }
 
   Future<ProductPost> getPost(int id) async {
-    await sleepAsync(500.ms);
+    await sleepAsync(1000.ms);
     return ProductPost(
       simpleProductPost: simpleProductPost1,
       content: '후에에에엥 나는야 productPost의 컨텐츠!'
